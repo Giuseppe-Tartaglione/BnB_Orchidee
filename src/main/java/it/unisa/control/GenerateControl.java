@@ -15,6 +15,7 @@ import it.unisa.model.Cart;
 import it.unisa.model.ProductModel;
 import it.unisa.model.UserBean;
 import it.unisa.model.ProductModelDS;
+import it.unisa.model.OrderBean;
 /**
  * Servlet implementation class GenerateControl
  */
@@ -37,6 +38,8 @@ public class GenerateControl extends HttpServlet {
 		HttpSession session = request.getSession();
 	    UserBean userTest = (UserBean) request.getSession(true).getAttribute("currentSessionUser"); 
 	    UserBean user= new UserBean();
+	    OrderBean order= new OrderBean();
+	    request.getSession(true).setAttribute("UserOrder", order);
 	    if (userTest==null) {
 	    	request.getSession(true).removeAttribute("currentSessionUser");
 	    	request.getSession(true).setAttribute("currentSessionUser", user);
@@ -60,32 +63,6 @@ public class GenerateControl extends HttpServlet {
 	      * request.getAttribute("varName");
 	      * getServletContext().setAttribute("varName", variable);
 	      */
-	     
-	     
-	     
-	     
-	     
-	     
-	     
-	     
-	     
-	     
-	     	/*session.setAttribute("currentSessionUser", user);
-			Cart cart = (Cart)session.getAttribute("cart");
-			if(cart == null) {
-				cart = new Cart();
-				session.setAttribute("cart", cart);
-			}
-			try {
-			String sort = request.getParameter("sort");
-			session.removeAttribute("products");
-			session.setAttribute("products", model.doRetrieveAll(sort));
-			}catch (SQLException e) {
-				System.out.println("Error:" + e.getMessage());
-			}
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/ProductView.jsp");
-			dispatcher.forward(request, response);
-		//System.out.println("stronzo2");*/
 	}
 
 	/**

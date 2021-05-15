@@ -172,5 +172,40 @@ public class ProductModelDS implements ProductModel {
 		}
 		return products;
 	}
+	public synchronized ProductBean doRetrieveByID(int id) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
 
+		ProductBean bean = new ProductBean();
+
+		String selectSQL = "SELECT * FROM " + ProductModelDS.TABLE_NAME + " WHERE ID = ?";
+
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setInt(1, id);
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				bean.setID_Stanza(rs.getInt("ID_Stanza"));
+				bean.setNome(rs.getString("Nome"));
+				bean.setTV(rs.getBoolean("TV"));
+				bean.setPanorama(rs.getBoolean("Panorama"));
+				bean.setPrezzo(rs.getInt("Prezzo"));
+				bean.setMatrimoniali(rs.getInt("Matrimoniali"));
+				bean.setSingoli(rs.getInt("Singoli"));
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return bean;
+	}
 }

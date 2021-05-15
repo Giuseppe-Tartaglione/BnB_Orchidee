@@ -50,6 +50,6 @@ if (product != null ) {
 }
 %>
 </table>
-<a href="./ProductView.jsp">Torna al Catalogo</a>
+<a href="./product">Torna al Catalogo</a>
 </body>
 </html>

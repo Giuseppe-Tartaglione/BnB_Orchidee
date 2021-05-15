@@ -37,9 +37,9 @@ try{
 <h2>Products</h2>
 <table border="1">
 <tr>
-<th>Nome <a href="OrderControl?sort=nome">Sort</a></th>
-<th>Data <a href="OrderControl?sort=data"></a></th>
-<th>Prezzo <a href="OrderControl?sort=prezzo">Sort</a></th>
+<th>Nome <a href="order?action=all&sort=nome">Sort</a></th>
+<th>Data <a href="order?action=all&sort=data"></a></th>
+<th>Prezzo <a href="order?action=all&sort=prezzo">Sort</a></th>
 <th>Action</th>
 </tr>
 <%
@@ -53,7 +53,7 @@ ProductBean bean = (ProductBean) it.next();
 <td><%=order.getData_Ordine()%></td>
 <td><%=order.getPrezzo() %></td>
 <td>
-<a href="OrderControl?action=read&id=<%=bean.getID_Stanza()%>">Dettagli</a><br>
+<a href="order?action=detail&id=<%=order.getID_Prenotazione()%>">Dettagli</a><br>
 </td>
 </tr>
 <%

@@ -34,9 +34,9 @@ for(ProductBean beancart: prodcart) {
 <%Totale+=beancart.getPrezzo();%>
 <%} %>
 </table>
-<a href="product?action=deleteAll">Paga</a>
+<a href="order?action=setOrder">Paga</a>
 <h2>Totale: <%=Totale%> </h2>
 <% } %>
-<a href="./ProductView.jsp">Torna al Catalogo</a>
+<a href="./product">Torna al Catalogo</a>
 </body>
 </html>

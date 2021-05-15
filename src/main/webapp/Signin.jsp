@@ -11,25 +11,25 @@
 <input type="hidden" name="action" value="signin"/>
 <fieldset name="Dati Personali">
 	<legend>Dati Personali</legend>
-		<label for name="Nome"><b>Nome</b></label><br>
+		<label for Name="Nome"><b>Nome</b></label><br>
 		<input type="text" name="Nome"/>
 		<br>
-		<label for name="Cognome"><b>Cognome</b></label><br>
+		<label for Name="Cognome"><b>Cognome</b></label><br>
 		<input type="text" name="Cognome"/>
 		<br>
-		<label for name="Nascita"><b>Data di nascita</b></label><br>
+		<label for Name="Nascita"><b>Data di nascita</b></label><br>
 		<input type="date" name="Nascita"/>
 		<br>
-		<label for name="CF"><b>Codice Fiscale</b></label><br>
+		<label for Name="CF"><b>Codice Fiscale</b></label><br>
 		<input type="text" name="CF"/>
 		<br>
 		<table>
 		<tr>
 			<td>
-			<label for name="Residenza"><b>Via/Viale/Piazza</b></label>
+			<label for Name="Residenza"><b>Via/Viale/Piazza</b></label>
 			</td>
 			<td>
-			<label for name="CAP"><b>CAP</b></label>
+			<label for Name="CAP"><b>CAP</b></label>
 			</td>
 		</tr>
 		<tr>	

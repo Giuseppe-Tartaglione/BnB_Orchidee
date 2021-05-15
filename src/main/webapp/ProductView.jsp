@@ -19,7 +19,7 @@ boolean result=false;
 <%
 try{
 	if ((user.isValid())){%>
-<a href="./order?action=view"><%=user.getCognome()%></a>
+<a href="./order?action=all"><%=user.getCognome()%></a>
 	
 <%	}else{ %>
 	<a href="./Login.jsp?action=login">Login</a>
@@ -35,8 +35,8 @@ try{
 <h2>Products</h2>
 <table border="1">
 <tr>
-<th>Nome <a href="product?sort=nome">ordina</a></th>
-<th>Prezzo <a href="product?sort=prezzo">ordina</a></th>
+<th>Nome <a href="product?sort=nome">Sort</a></th>
+<th>Prezzo <a href="product?sort=prezzo">Sort</a></th>
 <th>Action</th>
 </tr>
 <%

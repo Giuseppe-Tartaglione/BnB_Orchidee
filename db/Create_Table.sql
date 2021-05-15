@@ -74,7 +74,8 @@ drop table if exists Prenotazione;
 
 create table Prenotazione(
 ID_Prenotazione int primary key auto_Increment not null,
-ID_Utente char(16) not null references Utente(CF),
+ID_Utente char(16) not null references Utente(Email),
+ID_Pacchetto int,
 Data_Ordine date not null,
 Check_in datetime,
 Check_out datetime,
