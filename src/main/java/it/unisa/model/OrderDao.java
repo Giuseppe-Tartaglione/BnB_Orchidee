@@ -1,9 +1,12 @@
 package it.unisa.model;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
+import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
@@ -14,12 +17,17 @@ import javax.sql.DataSource;
 
 import java.util.Collection;
 import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+
 public class OrderDao {
 	private static DataSource ds;
+	static Connection conn;
+	static Statement stmt;
+	static PreparedStatement pstmt;
 	static ResultSet rs = null; 
-	
+	static enum pay{Pagato, Alloggio,Concluso};
 	static {
 		try {
 			Context initCtx = new InitialContext();
@@ -75,8 +83,30 @@ public class OrderDao {
 		
 		return order;
 	}
-	
-	
+	public void openConnection() {
+
+		try {
+
+			conn = DriverManager.getConnection(
+					"jdbc:mysql://localhost:3306/bnb_db?autoReconnect=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
+					"root", "root");
+			stmt = conn.createStatement();
+			
+		} catch (SQLException s) {
+			System.out.println("Connessione Fallita!");
+		}
+
+	}
+
+	public void closeConnection() {
+		try {
+			conn.close();
+			stmt.close();
+
+		} catch (SQLException s) {
+			System.out.println(s);
+		}
+	}
 	public synchronized  Collection <OrderBean> doRetrieveAll(String ID_Utente,String sort) throws SQLException {
 		Collection<OrderBean> orders = new LinkedList<OrderBean>();
 		OrderBean order = new OrderBean();
@@ -127,7 +157,7 @@ public class OrderDao {
 		return orders;
 	}
 	//questo metodo non so cosa sia, ma puó essere non me lo ricordi perchè sono in after XD
-	public synchronized ProductBean product() {
+	public synchronized void getProduct() {
 		ProductBean product = new ProductBean();
 	}
 	public synchronized void doSave(ProductBean product,Cart cart,String ID_Utente) throws SQLException {
@@ -174,7 +204,7 @@ public class OrderDao {
 	}
 	//implementazione di questa funziona slittata per la prossima consegna
 	//VARIABILE PAGATO: vanno implementati metodi per gestire la variabile stato, quest'ultima può avere 3 voci 
-	//pagato=l'utente ha pagato e sta aspettando il giorno del chackin per alloggiare, in questa fase si può richiedere un rimborsofino ad una settimana prima dal all'alloggio
+	//pagato=l'utente ha pagato e sta aspettando il giorno del checkin per alloggiare, in questa fase si può richiedere un rimborsofino ad una settimana prima dal all'alloggio
 	// alloggio=l'utente è residente nel periodo pagato, durante questo periodo la stanza non verrà mostrata nella ricerca delle stanze disponibili, al checkout verrà impostato su Concluso
 	// concluso= l'utente ha effettuato il check out e la stanza è libera di poter essere usata da altri, quest'ultima verrà mostrata nella ricerca delle camere libere
 	public static String doCurrentDate () {
@@ -183,5 +213,29 @@ public class OrderDao {
 	        Date curDate = new Date();
 	        date = dformat.format(curDate);
 		return date;
+	}
+	
+	//l'obiettivo è 
+	public static void controlDate() throws SQLIntegrityConstraintViolationException {
+		try {
+			conn = ds.getConnection();
+			Date d=new Date();
+			rs = stmt.executeQuery(
+					  "select *"
+					+ "FROM prenotazione "
+					+ "WHERE Check_in >= "+ d +
+					" and Check_out >= Check_in");
+			if(rs.getDate("Check_in").before(d)|| rs.getDate("Check_in").after(rs.getDate("Check_out"))) {
+				System.out.println("Errore prenotazione con Check-in nel giorno "+ rs.getDate("Check_in"));
+			}
+			while(rs.next()==true) {
+			}
+
+		} catch (SQLIntegrityConstraintViolationException s) {
+			throw (s);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	
 	}
 }

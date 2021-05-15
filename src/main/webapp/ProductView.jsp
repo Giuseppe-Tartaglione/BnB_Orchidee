@@ -32,11 +32,11 @@ try{
 </head>
 <body>
 
-<h2>Products</h2>
+<h2>Prodotti</h2>
 <table border="1">
 <tr>
-<th>Nome <a href="product?sort=nome">Sort</a></th>
-<th>Prezzo <a href="product?sort=prezzo">Sort</a></th>
+<th>Nome <a href="product?sort=nome">ordina</a></th>
+<th>Prezzo <a href="product?sort=prezzo">ordina</a></th>
 <th>Action</th>
 </tr>
 <%
@@ -65,6 +65,7 @@ ProductBean bean = (ProductBean) it.next();
 %>
 </table>
 <a href="./ProductCart.jsp">Controlla Carrello</a>
+<a href="styletest.html">Login</a>
 </body>
 </html>
 
