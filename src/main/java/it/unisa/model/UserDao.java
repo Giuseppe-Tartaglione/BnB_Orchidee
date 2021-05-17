@@ -37,7 +37,7 @@ public class UserDao {
 	private static final int EXPIRE_DATE = 1;
 	//metodo richiamato in ProductControl.java, prende in input l'oggetto utente (vedi UserBean.java) 
 	//e controlla se il risultato della query sia true o false (non ne ho capito il meccanismo)
-	//se è true imposta il valore isValid a true cioè l'utente esiste nel db, altrimenti lo imposta a false e passa avanti
+	//se ï¿½ true imposta il valore isValid a true cioï¿½ l'utente esiste nel db, altrimenti lo imposta a false e passa avanti
 	public static UserBean doRetrieve(UserBean user) throws SQLException{
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -73,7 +73,7 @@ public class UserDao {
 		      //if user exists set the isValid variable to true
 		      else if (more) 
 		      {
-		    		  //	System.out.println("more è vero");
+		    		  //	System.out.println("more ï¿½ vero");
 		    		  //	System.out.println("nome"+ rs.getString("Nome"));
 						user.setCF(rs.getString("CF"));
 						user.setNome(rs.getString("Nome"));
@@ -81,7 +81,7 @@ public class UserDao {
 						user.setEmail(rs.getString("Email"));
 						user.setPassword(rs.getString("Password"));
 						user.setValid(true);
-						//System.out.println("se more è valido"+user.isValid());
+						//System.out.println("se more ï¿½ valido"+user.isValid());
 		      }
 		} finally {
 			try {
@@ -100,7 +100,7 @@ public class UserDao {
 		PreparedStatement preparedStatement = null;
 
 		String selectSQL = "INSERT INTO " + UserDao.TABLE_NAME
-				+ " (CF,Nome,Cognome,Email,Password,Via,Città,Cap,Provincia,Telefono,Data_Nascita,Iscritto,Card,Scadenza_Card) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				+ " (CF,Nome,Cognome,Email,Password,Via,Cittï¿½,Cap,Provincia,Telefono,Data_Nascita,Iscritto,Card,Scadenza_Card) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 		try {
 			connection = ds.getConnection();
@@ -111,7 +111,7 @@ public class UserDao {
 			preparedStatement.setString(4, user.getEmail());
 			preparedStatement.setString(5, user.getPassword());
 			preparedStatement.setString(6, user.getVia());
-			preparedStatement.setString(7, user.getCittà());
+			preparedStatement.setString(7, user.getCittï¿½());
 			preparedStatement.setString(8, user.getCAP());
 			preparedStatement.setString(9, user.getProvincia());
 			preparedStatement.setString(10, user.getTelefono());

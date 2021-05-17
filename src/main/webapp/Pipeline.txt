@@ -1,0 +1,44 @@
+AdminView.jsp
+
+//implementare funzioni dell'admin (link alle jsp)
+    //aggiunta stanza
+    //cancellazione stanza
+    //modifica stanza
+//controllo ordini utenti (sia dettaglio che in gruppo)
+//cancellare oridini
+//creare e cancellare pacchetti
+//cambiare i dati anagrafici e di pagamento
+
+//Testare il css delle tabelle (?)
+
+Visualizzazione a bottoni verticali, cliccando su di essi ci sarà una query per ogni sezione le quali saranno gestite da una servlet
+
+
+|Stanza|v| ADD(pagina di aggiunta)
+    01|Nord > REMOVE/MODIFY  REMOVE(Elimina direttamente la stanza ed aggiorna la pagina) / MODIFY (apre una nuova pagina con poss di modificare tutto)
+    02|SUD  > REMOVE/MODIFY  REMOVE(Elimina direttamente la stanza ed aggiorna la pagina) / MODIFY (apre una nuova pagina con poss di modificare tutto)
+
+
+OrderDao
+
+
+
+
+
+
+MYSQL
+inserire boolean admin in utente
+inserire ID int autoincrement in prenotazione
+
+(in ogni DAO) public Tabella doModify(Tabella tab, String condizione) {
+
+        updateSQL="UPDATE ? SET ? = ? WHERE ? = ?;";
+        setString(1,tab.getTabella);
+        setString(2,tab.getColonna);
+        setTipo(3,tab.getValore);
+        setString(4,tab.getColonna);
+        setString(5, condizione)
+} 
+
+"UPDATE Pacchetto set Piscina = true where ID_Pacchetto = 001"
+"UPDATE Stanza set TV = false where ID_STanza = 002"

@@ -27,10 +27,11 @@
             <table class="table">
                 <tr>
                     <th>
-                        <input type="submit" name="action" value="Login">
+                        <input type="submit" name="action" value="Login">         
                     </th>
+                   
                     <th>
-                        <input type="submit" value="Registrati">    
+                        <input type="button"  onclick="location.href='./Signin.jsp'" value="Registrati">
                     </th>
                 </tr>
             </table>  
@@ -46,7 +47,6 @@
               	</tr>
               	</table>
             </div>       
-		</form>
 	</div>
 </body>
 </html>

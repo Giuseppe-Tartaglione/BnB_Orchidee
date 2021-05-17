@@ -5,7 +5,7 @@ public class BundleBean {
 	String ID_Stanza;
 	String Check_in;
 	String Check_out;
-	boolean Piscina;
+	boolean Piscina,valid;
 	boolean Ristorante;
 	int Prezzo;
 	
@@ -17,7 +17,6 @@ public class BundleBean {
 		Piscina=false;
 		Ristorante=false;
 		Prezzo=0;
-
 	}
 
 	public String getID_Pacchetto() {
@@ -75,19 +74,17 @@ public class BundleBean {
 	public void setPrezzo(int prezzo) {
 		Prezzo = prezzo;
 	}
+	public boolean isValid() {
+		return valid;
+	}
 
+	public void setValid(boolean valid) {
+		this.valid = valid;
+	}
 	@Override
 	public String toString() {
 		return "BundleBean [ID_Pacchetto=" + ID_Pacchetto + ", ID_Stanza=" + ID_Stanza + ", Check_in=" + Check_in
 				+ ", Check_out=" + Check_out + ", Piscina=" + Piscina + ", Ristorante=" + Ristorante + ", Prezzo="
 				+ Prezzo + "]";
 	}
-	
-	
-	
-	
-	
-	
-	
-
 }

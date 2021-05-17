@@ -42,7 +42,7 @@
 		</tr>
 		<tr>	
 			<td>
-			<label for name="Città"><b>Città</b></label>
+			<label for name="Cittï¿½"><b>Cittï¿½</b></label>
 			</td>
 			<td>
 			<label for name="Provincia"><b>Prov</b></label>
@@ -50,7 +50,7 @@
 		</tr>
 		<tr>	
 			<td>
-			<input type="text" name="Città">
+			<input type="text" name="Cittï¿½">
 			</td>
 			<td>
 			<input type="text" name="Provincia" size="5">

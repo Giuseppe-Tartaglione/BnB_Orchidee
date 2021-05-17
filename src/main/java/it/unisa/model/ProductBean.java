@@ -12,7 +12,6 @@ public class ProductBean implements Serializable {
 	int Prezzo;
 	int Matrimoniali;
 	int Singoli;
-	int Quantità;
 	public ProductBean() {
 		ID_Stanza = -1;
 		Nome = "";

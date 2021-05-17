@@ -51,6 +51,11 @@ ProductBean bean = (ProductBean) it.next();
 <td>
 <a href="product?action=read&id=<%=bean.getID_Stanza()%>">Dettagli</a><br>
 <a href="product?action=addC&id=<%=bean.getID_Stanza()%>">Aggiungi</a>
+<% if(user.isAdmin()){%>
+	<a href="product?action=modifyR&id=<%=bean.getID_Stanza()%>">Modifica</a><br>
+	<a href="product?action=removeR&id=<%=bean.getID_Stanza()%>">Rimuovi</a>
+<%}%>
+
 </td>
 </tr>
 <%
@@ -68,4 +73,3 @@ ProductBean bean = (ProductBean) it.next();
 <a href="styletest.html">Login</a>
 </body>
 </html>
-

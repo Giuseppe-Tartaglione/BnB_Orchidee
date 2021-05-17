@@ -26,8 +26,15 @@ public class OrderDao {
 	static Connection conn;
 	static Statement stmt;
 	static PreparedStatement pstmt;
-	static ResultSet rs = null; 
-	static enum pay{Pagato, Alloggio,Concluso};
+	static ResultSet rs = null;
+
+	static enum pay {
+		Pagato, Alloggio, Concluso
+	};
+
+	private static final ProductModelDS productDao = new ProductModelDS();
+	private static final Cart Cart = new Cart();
+	private static final BundleDao bundleDao = new BundleDao();
 	static {
 		try {
 			Context initCtx = new InitialContext();
@@ -40,21 +47,21 @@ public class OrderDao {
 		}
 	}
 	private static final String TABLE_NAME = "prenotazione";
-	private static final int IVA= 22;
-	public OrderBean doRetrievebyKey(String prenotazione,String ID_Utente) throws SQLException {
-		OrderBean order=new OrderBean();
+	private static final int IVA = 22;
+
+	public OrderBean doRetrievebyKey(String prenotazione, String ID_Utente) throws SQLException {
+		OrderBean order = new OrderBean();
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
-		String SQLquery="SELECT * FROM "+ TABLE_NAME + 
-				 "WHERE ID_Prenotazione = ? AND ID_Utente = ?";
+		String SQLquery = "SELECT * FROM " + TABLE_NAME + "WHERE ID_Prenotazione = ? AND ID_Utente = ?";
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(SQLquery);
-			preparedStatement.setString(1,prenotazione);
-			preparedStatement.setString(2,ID_Utente);
+			preparedStatement.setString(1, prenotazione);
+			preparedStatement.setString(2, ID_Utente);
 			ResultSet rs = preparedStatement.executeQuery();
-			boolean more=rs.next();
-			if(more) {
+			boolean more = rs.next();
+			if (more) {
 				order.setID_Utente(rs.getString("ID_Utente"));
 				order.setID_Prenotazione(rs.getString("ID_Prenotazione"));
 				order.setData_Ordine(rs.getString("Data_Ordine"));
@@ -67,11 +74,10 @@ public class OrderDao {
 				order.setVista_Panoramica(rs.getBoolean("Vista_Panoramica"));
 				order.setLetti_Matrimoniali(rs.getInt("Letti_Matrimoniali"));
 				order.setLetti_Singoli(rs.getInt("Letti_Singoli"));
-			}
-			else if(!more) {
+			} else if (!more) {
 				System.out.println("Prenotazione non presente nel sistema");
 			}
-		}finally {
+		} finally {
 			try {
 				if (preparedStatement != null)
 					preparedStatement.close();
@@ -80,9 +86,10 @@ public class OrderDao {
 					connection.close();
 			}
 		}
-		
+
 		return order;
 	}
+
 	public void openConnection() {
 
 		try {
@@ -91,7 +98,7 @@ public class OrderDao {
 					"jdbc:mysql://localhost:3306/bnb_db?autoReconnect=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
 					"root", "root");
 			stmt = conn.createStatement();
-			
+
 		} catch (SQLException s) {
 			System.out.println("Connessione Fallita!");
 		}
@@ -107,13 +114,13 @@ public class OrderDao {
 			System.out.println(s);
 		}
 	}
-	public synchronized  Collection <OrderBean> doRetrieveAll(String ID_Utente,String sort) throws SQLException {
+
+	public synchronized Collection<OrderBean> doRetrieveAll(String ID_Utente, String sort) throws SQLException {
 		Collection<OrderBean> orders = new LinkedList<OrderBean>();
 		OrderBean order = new OrderBean();
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
-		String SQLquery="SELECT * FROM "+ TABLE_NAME + 
-				 "WHERE ID_Utente= ? ";
+		String SQLquery = "SELECT * FROM " + TABLE_NAME + "WHERE ID_Utente= ? ";
 
 		if (sort != null && !sort.equals("")) {
 			SQLquery += " ORDER BY " + sort;
@@ -121,11 +128,11 @@ public class OrderDao {
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(SQLquery);
-			preparedStatement.setString(1,ID_Utente);
+			preparedStatement.setString(1, ID_Utente);
 			ResultSet rs = preparedStatement.executeQuery();
-			boolean more=rs.next();
-			if(more) {
-				while(rs.next()) {
+			boolean more = rs.next();
+			if (more) {
+				while (rs.next()) {
 					order.setID_Utente(rs.getString("ID_Utente"));
 					order.setID_Prenotazione(rs.getString("ID_Prenotazione"));
 					order.setData_Ordine(rs.getString("Data_Ordine"));
@@ -138,13 +145,12 @@ public class OrderDao {
 					order.setVista_Panoramica(rs.getBoolean("Vista_Panoramica"));
 					order.setLetti_Matrimoniali(rs.getInt("Letti_Matrimoniali"));
 					order.setLetti_Singoli(rs.getInt("Letti_Singoli"));
-				orders.add(order);
+					orders.add(order);
 				}
-			}
-			else if(!more) {
+			} else if (!more) {
 				System.out.println("Prenotazioni non presenti nel sistema");
 			}
-		}finally {
+		} finally {
 			try {
 				if (preparedStatement != null)
 					preparedStatement.close();
@@ -153,42 +159,66 @@ public class OrderDao {
 					connection.close();
 			}
 		}
-		
+
 		return orders;
 	}
-	//questo metodo non so cosa sia, ma puó essere non me lo ricordi perchè sono in after XD
+
+	// questo metodo non so cosa sia, ma puï¿½ essere non me lo ricordi perchï¿½ sono in
+	// after XD
 	public synchronized void getProduct() {
 		ProductBean product = new ProductBean();
 	}
-	public synchronized void doSave(ProductBean product,Cart cart,String ID_Utente) throws SQLException {
-		//vanno implementati oggetti di tipo prodotto, carrello, Pacchetto, stanza da cui vanno presi tutti i dati per settare la prenotazione
+
+	public synchronized void doSave(ProductBean product, Cart cart, BundleBean bundle, String ID_Utente)
+			throws SQLException {
+		// vanno implementati oggetti di tipo prodotto, carrello, Pacchetto, stanza da
+		// cui vanno presi tutti i dati per settare la prenotazione
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
-		//1.bisogna controllare se è stato usato un pacchetto o una prenotazione classica, se è stato usato un pacchetto inserire in ID_Pacchetto, Piscina e ristorante i valori presi dallo stesso, altrimenti inserire null
-		//2.bisogna fare un doRetrivebykey di stanza e prendere i dati sotto esplicitati
-		//3.gestire pacchetto allo stesso modo del punto 1, ma invece di null bisogna prendere il prezzo da stanza e non da pacchetto
+		product = productDao.doRetrieveByKey(product.getID_Stanza());
+
+		// 1.bisogna controllare se ï¿½ stato usato un pacchetto o una prenotazione
+		// classica, se ï¿½ stato usato un pacchetto inserire in ID_Pacchetto, Piscina e
+		// ristorante i valori presi dallo stesso, altrimenti inserire null
+		// 2.bisogna fare un doRetrivebykey di stanza e prendere i dati sotto
+		// esplicitati
+		// 3.gestire pacchetto allo stesso modo del punto 1, ma invece di null bisogna
+		// prendere il prezzo da stanza e non da pacchetto
 		String insertSQL = "INSERT INTO " + OrderDao.TABLE_NAME
 				+ " (ID_Utente,Data_Ordine,Check_in,Check_out,Piscina,Ristorante,Nome,TV,Vista_Panoramica,Letti_Matrimoniali,Letti_Singoli,iva,Prezzo,Stato) VALUES (?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?, ?,?)";
 
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
-			//tutti questi order. sono placeholder, vanno poi sostituiti con l'fettivo oggetto usato
-			preparedStatement.setString(1, ID_Utente);
+			// tutti questi order. sono placeholder, vanno poi sostituiti con l'fettivo
+			// oggetto usato
+			// generazione valore
+			while (rs.next())
+				preparedStatement.setString(1, ID_Utente);
 			preparedStatement.setString(2, OrderDao.doCurrentDate());
-			preparedStatement.setString(3, "2021-05-15"); //da implementare con i filtri del catalogo, per ora verranno sostituiti con una data standard
-			preparedStatement.setString(4, "2021-05-15"); // da implementare con i filtri del catalogo, per ora verranno sostituiti con una data standard
-			preparedStatement.setBoolean(5, order.isPiscina()); //recuperare da pacchetto
-			preparedStatement.setBoolean(6, order.isRistorante()); //recuperare da pacchetto
-			preparedStatement.setString(7, order.getNome()); //recuperare da stanza
-			preparedStatement.setBoolean(8, order.isTV()); //recuperare da stanza
-			preparedStatement.setBoolean(9, order.isVista_Panoramica()); //recuperare da stanza
-			preparedStatement.setInt(10, order.getLetti_Matrimoniali()); //recuperare da stanza
-			preparedStatement.setInt(11, order.getLetti_Singoli());//recuperare da stanza
-			preparedStatement.setInt(12,IVA);
-			preparedStatement.setFloat(13, order.getPrezzo()); //se pacchetto.isvalid() = true recuperare da pacchetto, altrimenti recuperare da stanza
-			preparedStatement.setString(14,"Pagato");  
-			
+			preparedStatement.setString(3, "2021-05-15"); // da implementare con i filtri del catalogo, per ora verranno
+															// sostituiti con una data standard
+			preparedStatement.setString(4, "2021-05-15"); // da implementare con i filtri del catalogo, per ora verranno
+															// sostituiti con una data standard
+			if (bundle.isValid()) {
+				preparedStatement.setBoolean(5, bundle.isPiscina()); // recuperare da pacchetto
+				preparedStatement.setBoolean(6, bundle.isRistorante()); // recuperare da pacchetto
+				preparedStatement.setFloat(13, bundle.getPrezzo()); // se pacchetto.isvalid() = true recuperare da
+																	// pacchetto, altrimenti recuperare da stanza
+			} else {
+				preparedStatement.setBoolean(5, false); // recuperare da pacchetto
+				preparedStatement.setBoolean(6, false); // recuperare da pacchetto
+				preparedStatement.setFloat(13, product.getPrezzo());
+			}
+
+			preparedStatement.setString(7, product.getNome()); // recuperare da stanza
+			preparedStatement.setBoolean(8, product.isTV()); // recuperare da stanza
+			preparedStatement.setBoolean(9, product.isVista_Panoramica()); // recuperare da stanza
+			preparedStatement.setInt(10, product.getLetti_Matrimoniali()); // recuperare da stanza
+			preparedStatement.setInt(11, product.getLetti_Singoli());// recuperare da stanza
+			preparedStatement.setInt(12, IVA);
+			preparedStatement.setString(14, "Pagato");
+
 			preparedStatement.executeUpdate();
 
 			connection.commit();
@@ -202,33 +232,40 @@ public class OrderDao {
 			}
 		}
 	}
-	//implementazione di questa funziona slittata per la prossima consegna
-	//VARIABILE PAGATO: vanno implementati metodi per gestire la variabile stato, quest'ultima può avere 3 voci 
-	//pagato=l'utente ha pagato e sta aspettando il giorno del checkin per alloggiare, in questa fase si può richiedere un rimborsofino ad una settimana prima dal all'alloggio
-	// alloggio=l'utente è residente nel periodo pagato, durante questo periodo la stanza non verrà mostrata nella ricerca delle stanze disponibili, al checkout verrà impostato su Concluso
-	// concluso= l'utente ha effettuato il check out e la stanza è libera di poter essere usata da altri, quest'ultima verrà mostrata nella ricerca delle camere libere
-	public static String doCurrentDate () {
-		String date=null;
-		 DateFormat dformat = new SimpleDateFormat("yyyy/MM/dd");
-	        Date curDate = new Date();
-	        date = dformat.format(curDate);
+
+	// implementazione di questa funziona slittata per la prossima consegna
+	// VARIABILE PAGATO: vanno implementati metodi per gestire la variabile stato,
+	// quest'ultima puï¿½ avere 3 voci
+	// pagato=l'utente ha pagato e sta aspettando il giorno del checkin per
+	// alloggiare, in questa fase si puï¿½ richiedere un rimborsofino ad una settimana
+	// prima dal all'alloggio
+	// alloggio=l'utente ï¿½ residente nel periodo pagato, durante questo periodo la
+	// stanza non verrï¿½ mostrata nella ricerca delle stanze disponibili, al checkout
+	// verrï¿½ impostato su Concluso
+	// concluso= l'utente ha effettuato il check out e la stanza ï¿½ libera di poter
+	// essere usata da altri, quest'ultima verrï¿½ mostrata nella ricerca delle camere
+	// libere
+	public static String doCurrentDate() {
+		String date = null;
+		DateFormat dformat = new SimpleDateFormat("yyyy/MM/dd");
+		Date curDate = new Date();
+		date = dformat.format(curDate);
 		return date;
 	}
-	
-	//l'obiettivo è 
+
 	public static void controlDate() throws SQLIntegrityConstraintViolationException {
+		// checkout < checkin
+		// controllo le date scelte dall'utente
 		try {
 			conn = ds.getConnection();
-			Date d=new Date();
+			Date d = new Date();
 			rs = stmt.executeQuery(
-					  "select *"
-					+ "FROM prenotazione "
-					+ "WHERE Check_in >= "+ d +
-					" and Check_out >= Check_in");
-			if(rs.getDate("Check_in").before(d)|| rs.getDate("Check_in").after(rs.getDate("Check_out"))) {
-				System.out.println("Errore prenotazione con Check-in nel giorno "+ rs.getDate("Check_in"));
+					"SELECT *" + "FROM prenotazione " + "WHERE Check_in >= " + d + " and Check_in > Check_out");
+			if (rs.getDate("Check_in").before(d) || rs.getDate("Check_in").after(rs.getDate("Check_out"))) {
+				System.out.println("Errore di prenotazione con Check-in nel giorno" + rs.getDate("Check_in"));
 			}
-			while(rs.next()==true) {
+			while (rs.next() == true) {
+
 			}
 
 		} catch (SQLIntegrityConstraintViolationException s) {
@@ -236,6 +273,6 @@ public class OrderDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	
+
 	}
 }

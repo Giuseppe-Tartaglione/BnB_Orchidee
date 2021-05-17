@@ -8,14 +8,15 @@ public class UserBean {
 	String email;
 	String password;
 	String Via;
-	String Città;
+	String Cittï¿½;
 	String CAP;
 	String Provincia;
 	String telefono;
 	String Data_Nascita;
 	String card;
 	String Scadenza_Card;
-	boolean valid,iscritto;
+	boolean valid, iscritto, admin;
+
 	public UserBean() {
 		CF=null;
 		Nome=null;
@@ -28,6 +29,14 @@ public class UserBean {
 		iscritto=false;
 	}
 	
+	public boolean isAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
+	}
+
 	public String getCF() {
 		return CF;
 	}
@@ -75,12 +84,12 @@ public class UserBean {
 		Via = via;
 	}
 
-	public String getCittà() {
-		return Città;
+	public String getCittï¿½() {
+		return Cittï¿½;
 	}
 
-	public void setCittà(String città) {
-		Città = città;
+	public void setCittï¿½(String cittï¿½) {
+		Cittï¿½ = cittï¿½;
 	}
 
 	public String getCAP() {

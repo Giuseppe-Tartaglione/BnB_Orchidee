@@ -63,7 +63,6 @@ public class ProductModelDS implements ProductModel {
 		}
 	}
 
-	@Override
 	public synchronized ProductBean doRetrieveByKey(int code) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -101,8 +100,7 @@ public class ProductModelDS implements ProductModel {
 		return bean;
 	}
 
-	@Override
-	public synchronized boolean doDelete(int code) throws SQLException {
+	}finally{if(connection!=null)connection.close();}}return(result!=0);}public synchronized boolean doDelete(int code) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
@@ -121,13 +119,6 @@ public class ProductModelDS implements ProductModel {
 			try {
 				if (preparedStatement != null)
 					preparedStatement.close();
-			} finally {
-				if (connection != null)
-					connection.close();
-			}
-		}
-		return (result != 0);
-	}
 
 	@Override
 	public synchronized Collection<ProductBean> doRetrieveAll(String order) throws SQLException {
@@ -172,6 +163,7 @@ public class ProductModelDS implements ProductModel {
 		}
 		return products;
 	}
+	
 	public synchronized ProductBean doRetrieveByID(int id) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
