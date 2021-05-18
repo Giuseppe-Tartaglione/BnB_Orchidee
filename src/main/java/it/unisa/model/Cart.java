@@ -11,6 +11,8 @@ public class Cart {
 		products = new ArrayList<ProductBean>();
 	}
 
+	public static final String TABLE_NAME = "stanza";
+
 	public void addProduct(ProductBean product) {
 		boolean i = false;
 		for (ProductBean prod : products) {
@@ -45,7 +47,18 @@ public class Cart {
 		ProductBean bean = new ProductBean();
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
-		String SQLquery = "SELECT * FROM " + TABLE_NAME + "WHERE ID_Utente= ? ";
+		String SQLquery = "SELECT * FROM " + TABLE_NAME + "WHERE ID_Stanza= ? ";
+		
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setInt(1, product.getID_Stanza());
+
+			ResultSet rs = preparedStatement.executeQuery();
+			while(rs.next()){
+				bean.
+
+			}
 		return bean;
 	}
 }

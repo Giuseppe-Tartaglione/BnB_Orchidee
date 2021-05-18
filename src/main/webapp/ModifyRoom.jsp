@@ -68,7 +68,7 @@
                 <input type="number" min="0" name="Singoli"/>
             </th>
         </tr>
-        
+
         <tr>
             <th>
                 <input type="submit" value="Annulla">
