@@ -8,7 +8,7 @@ public class UserBean {
 	String email;
 	String password;
 	String Via;
-	String Cittï¿½;
+	String Città;
 	String CAP;
 	String Provincia;
 	String telefono;
@@ -84,12 +84,12 @@ public class UserBean {
 		Via = via;
 	}
 
-	public String getCittï¿½() {
-		return Cittï¿½;
+	public String getCittà() {
+		return Città;
 	}
 
-	public void setCittï¿½(String cittï¿½) {
-		Cittï¿½ = cittï¿½;
+	public void setCittà(String città) {
+		Città = città;
 	}
 
 	public String getCAP() {

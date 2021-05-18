@@ -38,7 +38,7 @@ public class BundleDao {
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
-			preparedStatement.setInt(1, bundle.getID_Stanza()));
+			preparedStatement.setInt(1,Integer.parseInt(bundle.getID_Stanza()));
 			preparedStatement.setString(2, bundle.getCheck_in());
 			preparedStatement.setString(3, bundle.getCheck_out());
 			preparedStatement.setBoolean(4, bundle.isPiscina());
@@ -59,11 +59,11 @@ public class BundleDao {
 		}
 	}
 
-	public synchronized OrderBean doRetrieveByKey(String ID) throws SQLException {
+	public synchronized static BundleBean doRetrieveByKey(String ID) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
-		OrderBean bean = new OrderBean();
+		BundleBean bean = new BundleBean();
 
 		String selectSQL = "SELECT * FROM " + BundleDao.TABLE_NAME + " WHERE ID_Pacchetto = ?";
 
@@ -75,13 +75,15 @@ public class BundleDao {
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
-				bean.setID_Stanza(rs.getInt("ID_Stanza"));
-				bean.setNome(rs.getString("Nome"));
-				bean.setTV(rs.getBoolean("TV"));
-				bean.setPanorama(rs.getBoolean("Panorama"));
+				bean.setID_Pacchetto(rs.getString("ID_Pacchetto"));
+				bean.setID_Stanza(rs.getString("ID_Stanza"));
+				bean.setCheck_in(rs.getString("Check_in"));
+				bean.setCheck_out(rs.getString("Check_out"));
 				bean.setPrezzo(rs.getInt("Prezzo"));
-				bean.setMatrimoniali(rs.getInt("Matrimoniali"));
-				bean.setSingoli(rs.getInt("Singoli"));
+				bean.setPiscina(rs.getBoolean("Piscina"));
+				bean.setRistorante(rs.getBoolean("Ristorante"));
+				bean.setPrezzo(rs.getInt("Prezzo"));
+				bean.setValid(rs.getBoolean("Valid"));
 			}
 
 		} finally {

@@ -13,7 +13,9 @@ import javax.servlet.http.HttpSession;
 
 import it.unisa.model.BundleBean;
 import it.unisa.model.BundleDao;
+import it.unisa.model.Cart;
 import it.unisa.model.OrderDao;
+import it.unisa.model.ProductBean;
 import it.unisa.model.UserBean;
 
 /**
@@ -64,22 +66,18 @@ public class OrderControl extends HttpServlet {
 		} else if (action.equalsIgnoreCase("setOrder")) {
 			try {
 				if (user.isValid()) {
-					Cart cart = request.getSession().getAttribute("cart");
-					UserBean user = request.getSession().getAttribute("currentSessionUser");
+					Cart cart = (Cart) request.getSession().getAttribute("cart");
 					boolean isPackage = (boolean) request.getSession().getAttribute("isPackage");
 					String ID = (String) request.getSession().getAttribute("IDPackage");
+					ProductBean[] products = cart.doFillArray();
 					if (cart != null) {
-						if (isPackage) {
-							cart.order.doSave(product, cart, BundleDao.doRetrieveByKey(ID), user.getEmail());
-
+						if (isPackage) {		
+								order.doSave(products, BundleDao.doRetrieveByKey(ID), ID_Utente);			
 						}
 					} else {
 						System.out.println("Errore Tentato ordine invalido");
 					}
 
-					BundleBean bundle = request.
-
-							order.doSave(product, cart, bundle, ID_Utente);
 					// implementazione dell'aggiunta della tupla in prenotazione, vanno settati
 					// prima i metodi nel OrderDao e nel productDao
 				}

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import it.unisa.model.Cart;
+import it.unisa.model.ProductBean;
 import it.unisa.model.ProductModel;
 import it.unisa.model.ProductModelDS;
 import it.unisa.model.UserBean;

@@ -169,14 +169,13 @@ public class OrderDao {
 		ProductBean product = new ProductBean();
 	}
 
-	public synchronized void doSave(ProductBean product, Cart cart, BundleBean bundle, String ID_Utente)
+	public synchronized void doSave(ProductBean[] products, BundleBean bundle, String ID_Utente)
 			throws SQLException {
 		// vanno implementati oggetti di tipo prodotto, carrello, Pacchetto, stanza da
 		// cui vanno presi tutti i dati per settare la prenotazione
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
-		product = productDao.doRetrieveByKey(product.getID_Stanza());
-
+		
 		// 1.bisogna controllare se � stato usato un pacchetto o una prenotazione
 		// classica, se � stato usato un pacchetto inserire in ID_Pacchetto, Piscina e
 		// ristorante i valori presi dallo stesso, altrimenti inserire null
@@ -184,53 +183,60 @@ public class OrderDao {
 		// esplicitati
 		// 3.gestire pacchetto allo stesso modo del punto 1, ma invece di null bisogna
 		// prendere il prezzo da stanza e non da pacchetto
-		String insertSQL = "INSERT INTO " + OrderDao.TABLE_NAME
-				+ " (ID_Utente,Data_Ordine,Check_in,Check_out,Piscina,Ristorante,Nome,TV,Vista_Panoramica,Letti_Matrimoniali,Letti_Singoli,iva,Prezzo,Stato) VALUES (?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?, ?,?)";
+		
+		for(int i=0;i<products.length;i++) {
 
-		try {
-			connection = ds.getConnection();
-			preparedStatement = connection.prepareStatement(insertSQL);
-			// tutti questi order. sono placeholder, vanno poi sostituiti con l'fettivo
-			// oggetto usato
-			// generazione valore
-			while (rs.next())
-				preparedStatement.setString(1, ID_Utente);
-			preparedStatement.setString(2, OrderDao.doCurrentDate());
-			preparedStatement.setString(3, "2021-05-15"); // da implementare con i filtri del catalogo, per ora verranno
-															// sostituiti con una data standard
-			preparedStatement.setString(4, "2021-05-15"); // da implementare con i filtri del catalogo, per ora verranno
-															// sostituiti con una data standard
-			if (bundle.isValid()) {
-				preparedStatement.setBoolean(5, bundle.isPiscina()); // recuperare da pacchetto
-				preparedStatement.setBoolean(6, bundle.isRistorante()); // recuperare da pacchetto
-				preparedStatement.setFloat(13, bundle.getPrezzo()); // se pacchetto.isvalid() = true recuperare da
-																	// pacchetto, altrimenti recuperare da stanza
-			} else {
-				preparedStatement.setBoolean(5, false); // recuperare da pacchetto
-				preparedStatement.setBoolean(6, false); // recuperare da pacchetto
-				preparedStatement.setFloat(13, product.getPrezzo());
-			}
+			String insertSQL = "INSERT INTO " + OrderDao.TABLE_NAME
+					+ " (ID_Prenotazione,ID_Utente,Data_Ordine,Check_in,Check_out,Piscina,Ristorante,Nome,TV,Vista_Panoramica,Letti_Matrimoniali,Letti_Singoli,iva,Prezzo,Stato) VALUES (?,?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?, ?,?)";
 
-			preparedStatement.setString(7, product.getNome()); // recuperare da stanza
-			preparedStatement.setBoolean(8, product.isTV()); // recuperare da stanza
-			preparedStatement.setBoolean(9, product.isVista_Panoramica()); // recuperare da stanza
-			preparedStatement.setInt(10, product.getLetti_Matrimoniali()); // recuperare da stanza
-			preparedStatement.setInt(11, product.getLetti_Singoli());// recuperare da stanza
-			preparedStatement.setInt(12, IVA);
-			preparedStatement.setString(14, "Pagato");
-
-			preparedStatement.executeUpdate();
-
-			connection.commit();
-		} finally {
 			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				if (connection != null)
-					connection.close();
-			}
+				connection = ds.getConnection();
+				preparedStatement = connection.prepareStatement(insertSQL);
+				// tutti questi order. sono placeholder, vanno poi sostituiti con l'fettivo
+				// oggetto usato
+				// generazione valore
+				while (rs.next()) {
+					preparedStatement.setString(1, OrderDao.GenerateExpireCard());
+					preparedStatement.setString(2, ID_Utente);
+				preparedStatement.setString(3, OrderDao.doCurrentDate());
+				preparedStatement.setString(4, "2021-05-15"); // da implementare con i filtri del catalogo, per ora verranno
+																// sostituiti con una data standard
+				preparedStatement.setString(5, "2021-05-15"); // da implementare con i filtri del catalogo, per ora verranno
+																// sostituiti con una data standard
+				if (bundle.isValid()) {
+					preparedStatement.setBoolean(6, bundle.isPiscina()); // recuperare da pacchetto
+					preparedStatement.setBoolean(7, bundle.isRistorante()); // recuperare da pacchetto
+					preparedStatement.setFloat(14, bundle.getPrezzo()); // se pacchetto.isvalid() = true recuperare da
+																		// pacchetto, altrimenti recuperare da stanza
+				} else {
+					preparedStatement.setBoolean(6, false); // recuperare da pacchetto
+					preparedStatement.setBoolean(7, false); // recuperare da pacchetto
+					preparedStatement.setFloat(14, products[i].getPrezzo());
+				}
+
+				preparedStatement.setString(8, products[i].getNome()); // recuperare da stanza
+				preparedStatement.setBoolean(9, products[i].isTV()); // recuperare da stanza
+				preparedStatement.setBoolean(10, products[i].isPanorama()); // recuperare da stanza
+				preparedStatement.setInt(11, products[i].getMatrimoniali()); // recuperare da stanza
+				preparedStatement.setInt(12, products[i].getSingoli());// recuperare da stanza
+				preparedStatement.setInt(13, IVA);
+				preparedStatement.setString(15, "Pagato");
+
+				preparedStatement.executeUpdate();
+				connection.commit();
+				}
+				} finally {
+				try {
+					if (preparedStatement != null)
+						preparedStatement.close();
+				} finally {
+					if (connection != null)
+						connection.close();
+				}
+
+			
 		}
+				}
 	}
 
 	// implementazione di questa funziona slittata per la prossima consegna
@@ -274,5 +280,44 @@ public class OrderDao {
 			e.printStackTrace();
 		}
 
+	}
+	public static String GenerateOrderID() {
+		String number=null;
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		String SQLquery="SELECT Random FROM (SELECT FLOOR(RAND() * 999999999999999) AS Random) AS Random_1 "
+				+ "WHERE Random NOT IN (SELECT Card FROM utente WHERE Card IS NOT NULL) "
+				+ "LIMIT 1";
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(SQLquery);
+			ResultSet rs = preparedStatement.executeQuery();
+			boolean more=rs.next();
+			if(more) {
+				number=rs.getString("Random");
+			}
+			
+		}finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return number;
+	}
+	public static String GenerateExpireCard () {
+		String date= null;
+		 DateFormat dformat = new SimpleDateFormat("yyyy/MM/dd");
+	        Date curDate = new Date();
+	        Calendar cal = Calendar.getInstance();
+	        cal.setTime(curDate);
+	        cal.add(Calendar.YEAR, EXPIRE_DATE);
+	        date = dformat.format(cal.getTime());
+		return date;
+	}
+	
 	}
 }

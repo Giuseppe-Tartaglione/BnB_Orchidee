@@ -100,7 +100,7 @@ public class ProductModelDS implements ProductModel {
 		return bean;
 	}
 
-	}finally{if(connection!=null)connection.close();}}return(result!=0);}public synchronized boolean doDelete(int code) throws SQLException {
+	public synchronized boolean doDelete(int code) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
@@ -118,8 +118,8 @@ public class ProductModelDS implements ProductModel {
 		} finally {
 			try {
 				if (preparedStatement != null)
-					preparedStatement.close();
-
+					preparedStatement.close();}
+				finally{if(connection!=null)connection.close();}}return(result!=0);}
 	@Override
 	public synchronized Collection<ProductBean> doRetrieveAll(String order) throws SQLException {
 		Connection connection = null;
