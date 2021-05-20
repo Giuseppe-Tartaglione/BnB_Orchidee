@@ -3,7 +3,7 @@
 <%
 Collection<?> products = (Collection<?>) request.getSession().getAttribute("products");
 UserBean user = (UserBean) request.getSession().getAttribute("currentSessionUser");
-if((admin == null) && (products == null)) {
+if((user == null) && (products == null)) {
 response.sendRedirect("./generate");
 return;
 }
@@ -16,14 +16,14 @@ boolean result=false;
 <html>
 <%@ page contentType="text/html; charset=UTF-8" import="java.util.*,it.unisa.model.ProductBean,it.unisa.model.Cart,it.unisa.model.UserBean"%>
 <%=user.isValid() %>
-<%
+
 
 <a href="./Change?action=CambioPagamento">Cambia i dati di pagamento</a> 
 <a href="./Change?action=CambiaDatiAnagrafici">Modifica i dati Anagrafici</a>
 <a href="./Change?action=ModificaStanza">Modifica Stanza</a>
 <a href="./Change?action=GestisciOrdiniUtente">Gestisci Ordini Utente</a>
 <a href="./Change?action=ModificaPacchetti">Modifica Pacchetti Stanza</a>
-
+<%
 try {
 	if ((user.isAdmin()))%>
         <a href="./AdminView.jsp"></a>	

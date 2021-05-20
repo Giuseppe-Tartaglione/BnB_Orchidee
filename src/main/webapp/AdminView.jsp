@@ -6,12 +6,12 @@
 //creazione/rimozione pacchetti
 //cambiare i dati anagrafici e di pagamento dell'utente
 
-<%@page import="java.io.IOException"%>
+<%@page import="java.io.*,it.unisa.model.*,java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 Collection<?> products = (Collection<?>) request.getSession().getAttribute("products");
 UserBean user = (UserBean) request.getSession().getAttribute("currentSessionUser");
-
+%>
 <html lang="en">
 <head>
     <meta charset="UTF-8">

@@ -11,8 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import it.unisa.model.BundleBean;
-import it.unisa.model.BundleDao;
 import it.unisa.model.Cart;
 import it.unisa.model.OrderDao;
 import it.unisa.model.ProductBean;
@@ -34,11 +32,12 @@ public class OrderControl extends HttpServlet {
 	}
 
 	/**
+	 * @throws IOException 
+	 * @throws ServletException 
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(true);
 		String ID_Prenotazione = request.getParameter("ID");
 		String sort = request.getParameter("sort");
@@ -65,38 +64,33 @@ public class OrderControl extends HttpServlet {
 			}
 		} else if (action.equalsIgnoreCase("setOrder")) {
 			System.out.println("test");
-		}
-			try {
-				if (user.isValid()) {
-					Cart cart = (Cart) request.getSession().getAttribute("cart");
-					boolean isPackage = true; //(boolean) request.getSession().getAttribute("isPackage");
-					String ID = (String) request.getSession().getAttribute("IDPackage");
-					ProductBean[] products = cart.doFillArray();
-					if (cart != null) {
-						if (isPackage) {		
-							//	order.doSave(products, BundleDao.doRetrieveByKey(ID), ID_Utente);	
-								System.out.println("Ordine fatto");
-						}
-					} else {
-						System.out.println("Errore Tentato ordine invalido");
+				try {
+					if (user.isValid()) {
+						Cart cart = (Cart) request.getSession().getAttribute("cart");
+						boolean isPackage = true; //(boolean) request.getSession().getAttribute("isPackage");
+						String ID = (String) request.getSession().getAttribute("IDPackage");
+						ProductBean[] products = cart.doFillArray();
+						if (cart != null) {
+							if (isPackage)		
+								System.out.println("Ordine fatto");	
+						} else
+							System.out.println("Errore Tentato ordine invalido");
 					}
-
-					// implementazione dell'aggiunta della tupla in prenotazione, vanno settati
-					// prima i metodi nel OrderDao e nel productDao
+				} catch (Exception e) {
+					System.out.println("the error was: " + e);
 				}
-			} catch (SQLException e) {
-				System.out.println("the error was: " + e);
-			} // errore dovuto al fatto che non c'� anccora il comando sql
-		}
+		}	
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+			doGet(request, response);
 	}
 
 }
