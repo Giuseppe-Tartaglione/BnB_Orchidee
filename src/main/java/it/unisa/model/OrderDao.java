@@ -196,7 +196,7 @@ public class OrderDao {
 				// oggetto usato
 				// generazione valore
 				while (rs.next()) {
-					preparedStatement.setString(1, OrderDao.GenerateExpireCard());
+					preparedStatement.setString(1, OrderDao.GenerateOrderID());
 					preparedStatement.setString(2, ID_Utente);
 				preparedStatement.setString(3, OrderDao.doCurrentDate());
 				preparedStatement.setString(4, "2021-05-15"); // da implementare con i filtri del catalogo, per ora verranno
@@ -281,7 +281,7 @@ public class OrderDao {
 		}
 
 	}
-	public static String GenerateOrderID() {
+	public static String GenerateOrderID() throws SQLException {
 		String number=null;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -308,16 +308,6 @@ public class OrderDao {
 		}
 		return number;
 	}
-	public static String GenerateExpireCard () {
-		String date= null;
-		 DateFormat dformat = new SimpleDateFormat("yyyy/MM/dd");
-	        Date curDate = new Date();
-	        Calendar cal = Calendar.getInstance();
-	        cal.setTime(curDate);
-	        cal.add(Calendar.YEAR, EXPIRE_DATE);
-	        date = dformat.format(cal.getTime());
-		return date;
-	}
 	
-	}
 }
+

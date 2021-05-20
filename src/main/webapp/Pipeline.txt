@@ -42,3 +42,9 @@ inserire ID int autoincrement in prenotazione
 
 "UPDATE Pacchetto set Piscina = true where ID_Pacchetto = 001"
 "UPDATE Stanza set TV = false where ID_STanza = 002"
+
+
+Generale
+creare la pagina per i pacchetti,
+riempire il db con i pacchetti,
+controllare se l'ordine è stato fatto tramite pacchetto (implemetazre un metodo)

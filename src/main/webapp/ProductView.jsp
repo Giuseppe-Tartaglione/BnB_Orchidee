@@ -31,7 +31,7 @@ try{
 <title>BnB Orchidee</title>
 </head>
 <body>
-
+ 
 <h2>Prodotti</h2>
 <table border="1">
 <tr>

@@ -16,6 +16,7 @@ import it.unisa.model.ProductModel;
 import it.unisa.model.UserBean;
 import it.unisa.model.ProductModelDS;
 import it.unisa.model.OrderBean;
+import it.unisa.model.BundleBean;
 /**
  * Servlet implementation class GenerateControl
  */
@@ -39,7 +40,9 @@ public class GenerateControl extends HttpServlet {
 	    UserBean userTest = (UserBean) request.getSession(true).getAttribute("currentSessionUser"); 
 	    UserBean user= new UserBean();
 	    OrderBean order= new OrderBean();
+	    BundleBean bundle =new BundleBean();
 	    request.getSession(true).setAttribute("UserOrder", order);
+	    request.getSession(true).setAttribute("SelectedBundle",bundle);
 	    if (userTest==null) {
 	    	request.getSession(true).removeAttribute("currentSessionUser");
 	    	request.getSession(true).setAttribute("currentSessionUser", user);

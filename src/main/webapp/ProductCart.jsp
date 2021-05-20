@@ -1,18 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 ProductBean product = (ProductBean) request.getAttribute("product");
-    Cart cart = (Cart) request.getSession().getAttribute("cart");
+Cart cart = (Cart) request.getSession().getAttribute("cart");
+UserBean user = (UserBean) request.getSession().getAttribute("currentSessionUser");
     int Totale=0;
 %>    
 <!DOCTYPE html>
 <html>
-<%@ page contentType="text/html; charset=UTF-8" import="java.util.*,it.unisa.model.ProductBean,it.unisa.model.Cart"%>
+<%@ page contentType="text/html; charset=UTF-8" import="java.util.*,it.unisa.model.ProductBean,it.unisa.model.Cart,it.unisa.model.UserBean"%>
 <head>
 <meta charset="ISO-8859-1">
 <title>Carrello</title>
 </head>
 <body>
-
+<%= user.getCognome() %>
 <% if(cart != null) { %>
 <h2>Carrello</h2>
 <table border="1">

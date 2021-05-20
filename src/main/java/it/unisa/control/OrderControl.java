@@ -64,15 +64,18 @@ public class OrderControl extends HttpServlet {
 				System.out.println("the error was: " + e);
 			}
 		} else if (action.equalsIgnoreCase("setOrder")) {
+			System.out.println("test");
+		}
 			try {
 				if (user.isValid()) {
 					Cart cart = (Cart) request.getSession().getAttribute("cart");
-					boolean isPackage = (boolean) request.getSession().getAttribute("isPackage");
+					boolean isPackage = true; //(boolean) request.getSession().getAttribute("isPackage");
 					String ID = (String) request.getSession().getAttribute("IDPackage");
 					ProductBean[] products = cart.doFillArray();
 					if (cart != null) {
 						if (isPackage) {		
-								order.doSave(products, BundleDao.doRetrieveByKey(ID), ID_Utente);			
+							//	order.doSave(products, BundleDao.doRetrieveByKey(ID), ID_Utente);	
+								System.out.println("Ordine fatto");
 						}
 					} else {
 						System.out.println("Errore Tentato ordine invalido");
@@ -85,7 +88,6 @@ public class OrderControl extends HttpServlet {
 				System.out.println("the error was: " + e);
 			} // errore dovuto al fatto che non c'� anccora il comando sql
 		}
-	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse

@@ -17,6 +17,7 @@ public class BundleBean {
 		Piscina=false;
 		Ristorante=false;
 		Prezzo=0;
+		valid=false;
 	}
 
 	public String getID_Pacchetto() {
