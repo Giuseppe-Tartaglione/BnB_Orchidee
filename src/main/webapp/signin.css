@@ -1,0 +1,316 @@
+@charset "ISO-8859-1";
+body{
+	margin:0;
+    padding: 0;
+    font-family: sans-serif;
+    /* background: linear*/
+    height: 100vh;
+    overflow: hidden;
+}
+fieldset{
+	margin:10%;
+	background-color: lightgrey;
+	border-radius: 10px;
+	align-content: center;
+	margin-inline-start: 2px;
+    margin-inline-end: 2px;
+    padding-block-start: 0.35em;
+    padding-inline-start: 0.75em;
+    padding-inline-end: 0.75em;
+    padding-block-end: 0.625em;
+    min-inline-size: min-content;
+    font-size: 100%;
+    font: inherit;
+}
+label{
+	margin: 0;
+	margin-left:50%;
+	color: black;
+}
+
+label.error {
+    background: #333 url(img/alert.png) no-repeat 5px 5px;
+    color: #fff;
+    display: block;
+    float: left;
+    font-size: 11px;
+    height: 20px;
+    padding: 6px 10px 0px 25px;
+    font-weight: 400;
+    margin: 8px 5px 0 0;
+    border-radius: 5px;
+    background-clip: border-box;
+}
+input[type="text"],input[type="month"], input[type="password"], input[type="email"], select {
+    height: 39px;
+    line-height: 39px;
+    outline: none;
+    color: black;
+    align-content:center;
+    padding: 0 10px;
+    margin:0;
+    margin-left:50%;
+    width:40%;
+    max-width: 100%;
+    display: block;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 10px;
+}
+input[type="password"], input[type="email"]{
+	width:70%;
+}
+input[type="date"],input[type="month"]{
+	height: 39px;
+    line-height: 39px;
+    outline: none;
+    padding: 0 10px;
+    margin:0;
+    width:60%;
+    max-width: 100%;
+    display: block;
+    margin-bottom: 20px;
+    margin-left:50%;
+    border: 3px solid green;
+    border-radius: 10px; 
+    
+ }
+ 
+.table th {
+    width: 50%;
+}
+.step {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    color: #ffffff;
+    margin-bottom: 0;
+    height: auto;
+}
+ul {
+    list-style: none outside;
+}
+ol, ul {
+    list-style: none;
+}
+ul.step,legend,article,body, .checker {
+    margin: 0;
+    padding: 0;
+}
+.step-text li {
+    cursor: pointer;
+    float: left;
+    padding: 7px 20px;
+    font-weight: 600;
+    margin-bottom: 0px;
+    margin-left: 2px;
+    position: relative;
+    font-size: 16px;
+
+}
+.step-text li:first-child {
+    margin-left: 0;
+}
+
+.step-text .current-step {
+    cursor: auto;
+    background-color: lightgrey;
+    border: 10px;
+    padding: 7px 20px;
+}
+.step-text li {
+    cursor: pointer;
+    float: left;
+    padding: 7px 20px;
+    /*background: url(../img/white_bg_30.png) repeat-x left bottom;*/
+    font-weight: 600;
+    margin-bottom: 0px;
+    margin-left: 2px;
+    position: relative;
+    font-size: 16px;
+}
+li {
+    line-height: 18px;
+    margin-bottom: 12px;
+}
+div{
+	display: block;
+	margin:0;
+}
+.step {
+    clear: left;
+    padding: 50px 60px;
+    box-shadow: 3px 3px 3px rgb(0 0 0 / 30%);
+}
+
+form{
+	display: block;
+}
+
+#form_area {
+    background: url(../img/blur_1.jpg) no-repeat top center;
+    width: 100%;
+    padding: 60px 0;
+    position: relative;
+    color: #fff;
+    border-bottom: 4px solid #CCC;
+    border-top: 4px solid #CCC;
+}
+.container .five.columns {
+    width: 280px;
+}
+.column.omega, .columns.omega {
+    margin-right: 0;
+    text-align: center;
+
+}
+.column.alpha, .columns.alpha {
+    margin-left: 0;
+    float: left;
+    text-align:center;
+}
+.container .column, .container .columns {
+    float: left;
+    display: inline;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+input.error{
+	border-bottom: ixp solid #C00;
+}
+a.tooltip_1 {
+    position: absolute;
+    right: 0;
+    background: url(img/info.png) no-repeat 0 0;
+    width: 14px;
+    height: 14px;
+    text-indent: -9999px;
+    top: 0px;
+    display: block;
+}
+a.button-back, a.button-next {
+    text-decoration: none;
+    color: #fff;
+}
+.button-back, .button-next {
+    cursor: pointer;
+    padding: 8px 20px;
+    background: #f37410 url(../img/bg_button_yellow.png) repeat-x 0 0;
+    font-weight: 700;
+    border-radius: 4px;
+    border-top: 1px solid #fac068;
+    border-left: 1px solid #fac068;
+    box-shadow: 1px 2px 2px rgb(0 0 0 / 30%);
+    text-shadow: 1px 1px 1px rgb(0 0 0 / 40%);
+    font-size: 12px;
+}
+.button-next {
+    float: right;
+}
+.button-back{
+    float: left;
+}
+p{
+	margin: 0 0 20px 0;
+	display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+p a, p a:visited {
+    line-height: inherit;
+}
+a, a:visited {
+    color: #333;
+    text-decoration: underline;
+    outline: 0;
+}
+
+.container:after {
+    content: "\0020";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+article{
+	margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+.container {
+    position: inherit;
+    width: 960px;
+    margin: 0 auto;
+    padding: 0;
+}
+.finish {
+    background: #8dc63f -webkit-linear-gradient(top, rgba(255,255,255,.2) 0%,rgba(0,0,0,.2) 100%);
+    box-shadow: 1px 2px 2px rgb(0 0 0 / 30%);
+    border: none;
+    border-top: 1px solid #acd373;
+    border-left: 1px solid #acd373;
+    border-radius: 4px;
+    color: #fff;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    float: none;
+    text-decoration: none;
+    text-shadow: 1px 1px 1px rgb(0 0 0 / 40%);
+    cursor: pointer;
+    margin-bottom: 0;
+    margin-left:70%;
+    line-height: normal;
+    padding: 8px 20px;
+    font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+div.checker {
+    margin-right: 5px;
+    position: relative;
+}
+div.checker, div.checker span, div.checker input {
+    width: 19px;
+    height: 19px;
+}
+div.checker input{
+	opacity:1;
+	border: none;
+	background: none;
+	zoom:1;
+	display: inline-block;
+}
+div.checker span {
+    display: inline-block;
+    zoom: 1;
+    text-align: center;
+    font-size:100%;
+    font:inherit;
+    background-position: 0 -458px;
+}
+.checker{
+	display:inline-block;
+	zoom:1;
+	vertical-align: middle;
+}
+input[type="checkbox"] {
+    display: inline-block;
+}
+francybox{
+	text-align: center;
+    background-position: 0 auto;
+    float: right;
+}
+.clear {
+    clear: both;
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}

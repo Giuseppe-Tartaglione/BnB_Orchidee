@@ -4,82 +4,94 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<link rel="stylesheet" href="signin.css">
+<title>Signin</title>
 </head>
 <body>
-<form action="UserControl" method="post">
-<input type="hidden" name="action" value="signin"/>
-<fieldset name="Dati Personali">
-	<legend>Dati Personali</legend>
-		<label for Name="Nome"><b>Nome</b></label><br>
-		<input type="text" name="Nome"/>
-		<br>
-		<label for Name="Cognome"><b>Cognome</b></label><br>
-		<input type="text" name="Cognome"/>
-		<br>
-		<label for Name="Nascita"><b>Data di nascita</b></label><br>
-		<input type="date" name="Nascita"/>
-		<br>
-		<label for Name="CF"><b>Codice Fiscale</b></label><br>
-		<input type="text" name="CF"/>
-		<br>
-		<table>
-		<tr>
-			<td>
-			<label for Name="Residenza"><b>Via/Viale/Piazza</b></label>
-			</td>
-			<td>
-			<label for Name="CAP"><b>CAP</b></label>
-			</td>
-		</tr>
-		<tr>	
-			<td>
-			<input type="text" name="Via" placeholder="via Bisanzio,14" >
-			</td>
-			<td>
-			<input type="text" name="CAP" size="5"/>
-			</td>				
-		</tr>
-		<tr>	
-			<td>
-			<label for name="Cittï¿½"><b>Cittï¿½</b></label>
-			</td>
-			<td>
-			<label for name="Provincia"><b>Prov</b></label>
-			</td>				
-		</tr>
-		<tr>	
-			<td>
-			<input type="text" name="Cittï¿½">
-			</td>
-			<td>
-			<input type="text" name="Provincia" size="5">
-			</td>				
-		</tr>
-		</table>
-		<label for name="Telefono"><b>Telefono/Cellulare</b></label><br>
-		<input type="text" name="Telefono">
-</fieldset>
-<fieldset>
-	<legend>Dati di accesso</legend>
-		<label for="Email"><b>Email</b></label><br>
-		<input type="text" name="Email"/><br>
-		<label for="Password"><b>Password</b></label><br>
-		<input type="text" name="Password"/><br>
-</fieldset>
-<fieldset>
-	<legend>Dati di fatturazione</legend>
-		<label for name="Titolare"><b>Titolare</b></label><br>
-		<input type="text" name="Titolare" placeholder="Mario Rossi"><br>
-		<label for="CodiceCarta"><b>Codice Carta</b></label><br>
-		<input type="text" name="CodiceCarta"/><br>
-		<label for="Password"><b>Scandenza</b></label><br>
-		<input type="text" name="Password"/><br>
-		<label for="CVV"><b>CVV</b></label><br>
-		<input type="text" name="CVV" size="5"/><br>
-</fieldset>
+<article class="container">
+<div>
+	<ul id="custom-titles" class="step-text">
+		<li id="st1" class="current-step">
+			<div>Step 1</div>
+			<span>Dati personali</span>
+		</li>
+		<li id="st2">
+			<div>Step 2</div>
+			<span>Dati accesso</span>
+		</li>
+		<li id="st3">
+			<div>Step 3</div>
+			<span>Dati fatturazione</span>
+		</li>
+	</ul>
+</div>
+	<form> <!--action="UserControl" method="post">  --> 
+	<input class="text" type="hidden" name="action" value="signin"/>
 	
-	<input type="submit" value="Registrati">
+	<!--  Start step 1 -->
+	
+	<fieldset id="st1" title="Step1" class="step" name="Dati Personali">
+		<legend style="display: none;">Personal info</legend>
+	<div class="five columns alpha">
+            <label for="Nome"><b>Nome</b>
+            	<a href="#" class="tooltip_1" title="Your tooltip">Info</a>
+            </label>
+            <input type="text" name="Nome" class="text error" required>
+    </div>
+    <div class="five columns omega">
+		<label for="Cognome"><b>Cognome</b>
+			<a href="#" class="tooltip_1" title="Your tooltip">Info</a>
+		</label>
+		<input type="text"  name="Cognome" class="text error" required/>
+    </div>
+    <div class="five columns alpha">
+		<label for="Nascita"><b>Data di nascita</b>
+			<a href="#" class="tooltip_1" title="Your tooltip">Info</a>
+		</label>
+		<input type="date" name="Nascita" class="text error" required/>    
+    </div >
+    <div class="five columns omega">
+   		<label for="CF"><b>Codice Fiscale</b>
+   			<a href="#" class="tooltip_1" title="Your tooltip">Info</a>
+   		</label>
+		<input type="text" name="CF" class="text error" required/> 
+    </div>
+    <div class="five columns alpha">
+		<label for="Residenza"><b>Via</b>
+			<a href="#" class="tooltip_1" title="Your tooltip">Info</a>
+		</label>
+		<input type="text" name="CAP" size="5" class="text error" required/>
+    </div>
+    <div class="five columns omega">
+		<label for="CAP"><b>CAP</b>
+			<a href="#" class="tooltip_1" title="Your tooltip">Info</a>
+		</label>
+		<input type="text" name="Via" placeholder="via Bisanzio,14" >
+    </div>
+    <div class="five columns alpha">				
+    	<label for="Città"><b>Città</b>
+    		<a href="#" class="tooltip_1" title="Your tooltip">Info</a>
+    	</label>
+    	<input type="text" name="Città" class="text error" required>
+	</div>
+    <div class="five columns omega">				
+  		<label for="Provincia"><b>Prov</b>
+    			<a href="#" class="tooltip_1" title="Your tooltip">Info</a>
+    	</label>
+		<input type="text" name="Provincia" size="5">
+    </div>
+    <div class="five columns alpha">
+		<label for="Telefono"><b>Telefono/Cellulare</b>
+				<a href="#" class="tooltip_1" title="Your tooltip">Info</a>
+		</label>
+		<input type="text" name="Telefono">   
+    </div>
+    <p id="custom-buttons-0" class="custom-buttons">
+    	<a id="custom-next-0" href="Signin2.jsp" class="button-next">Next step</a>
+    </p>
+</fieldset>
+ 	<!-- END STEP 1 -->
 </form>
+</article>
 </body>
 </html>
