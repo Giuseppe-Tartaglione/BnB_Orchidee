@@ -1,10 +1,17 @@
+<%@ page import="java.util.Calendar, java.util.Date, java.text.DateFormat, java.text.SimpleDateFormat" %>
+<% DateFormat dformat = new SimpleDateFormat("dd/MM/yyyy");
+Date d = new Date(); 
+   Calendar cal = Calendar.getInstance();
+	        cal.setTime(d);
+	        cal.add(Calendar.DAY_OF_MONTH, 1);
+	        %>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homepage</title>
-    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="css_file/home.css">
 </head>
 
 <header>  
@@ -33,13 +40,13 @@
             <ul>
                 <li>
                     <div class="check-in">Check In: 
-                        <input type="date" value="today" required>
+                        <input type="date" value="<%=dformat.format(d)%>" required>
                     </div>
                 </li>
 
                 <li>
                     <div class="check-out">Check Out: 
-                        <input type="date" value="tomorrow" required>
+                        <input type="date" value="<%=dformat.format(cal.getTime())%>" required>
                     </div>
                 </li>
 
