@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css_file/style.css">
 </head>
 
-<body>
+<body style="background-color:#f0f0f0">
 	<div class="center">   
         <h1><img class="image" src="img/immagine.png" alt="login_image"></h1>
         <form action="./user" method="post">             
@@ -28,8 +28,8 @@
             <div>
                 <table class="table">
                     <tr>
-                        <th><input type="submit" class="button" name="action" value="Login"></th>
-                        <th><input type="button" class="button" onclick="location.href='./Signin.jsp'" value="Registrati"></th>
+                        <th><input type="submit" name="action" value="Login"></th>
+                        <th><input type="button" onclick="location.href='./signup/Signup.jsp'" value="Registrati"></th>
                     </tr>
                 </table>  
             </div>

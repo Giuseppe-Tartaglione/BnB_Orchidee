@@ -47,4 +47,4 @@ inserire ID int autoincrement in prenotazione
 Generale
 creare la pagina per i pacchetti,
 riempire il db con i pacchetti,
-controllare se l'ordine è stato fatto tramite pacchetto (implemetazre un metodo)
+controllare se l'ordine è stato fatto tramite pacchetto (implemetare un metodo)
