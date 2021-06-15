@@ -1,79 +1,62 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html lang="it">
-	<head>
-        <title>Registration Form</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <link rel="stylesheet" type="text/css" href="Signup.css">
-    	<style>
-    	</style>
-    </head>
-    <body>    
-        <form action="" class="register">
-            <h1>Registrazione</h1>
-            <fieldset class="row1">
-                <legend>Dettagli Account
-                </legend>
+<html>
+<%@ page import="it.unisa.model.UserBean"%>
+<% UserBean cliente = new UserBean();%>
+<head>
+<meta charset="ISO-8859-1">
+<title>Modifica dati</title>
+<link rel="stylesheet" href="modifydate.css">
+</head>
+<body>
+          <fieldset class="row1">
+                <legend>Dettagli Account</legend>
                 <p> 
-                <label>Email *</label>
-                <input type="email" name="Email" class="long" required>
-                </p>
-                <p>
-                    <label>Password*
-                    </label>
-                    <input type="password" name="Password" required>
-                    <label>Ripeti Password* </label>
-                    <input type="password" required>
-                    <label class="obinfo">* campi obbligatori</label>
+                <label>Email </label>
+                	<input type="email" name="Email" class="long" placeholder="<%=cliente.getEmail() %>" required>
+                <label>Password</label>
+                   	<input type="password" name="Password">
                 </p>
             </fieldset>
             <fieldset class="row2">
                 <legend>Dettagli Personali </legend>
                 <p>
-                    <label>Nome *</label>
-                    <input type="text" name="Nome" required>
-                </p>
-                 <p>
-                    <label>Cognome *</label>
-                    <input type="text" name="Cognome" required>
-                </p>
-                <p>
-                	<label>Codice Fiscale *</label>
-                    <input type="text" maxlength="16" name="CF" required>
+                    <label>Nome </label>
+                    <input type="text" name="Nome"  placeholder="<%=cliente.getNome() %>" required>
+                
+                    <label>Cognome </label>
+                    <input type="text" name="Cognome" placeholder="<%=cliente.getCognome() %>" required>
                 </p>
                 <p>
-                    <label>Telefono *</label>
-                    <input type="text" name="Telefono" maxlength="10" required>
+                	<label>Codice Fiscale </label>
+                    <input type="text" maxlength="16" name="CF" placeholder="<%=cliente.getCF() %>" required>
+                    <label>Telefono </label>
+                    <input type="text" name="Telefono" maxlength="10" placeholder="<%=cliente.getTelefono()%>" >
                 </p>
                 <p>
-                    <label>Via *</label>
-                    <input type="text" name="Via" required>
-                </p>
-				<p>
-					<label>CAP *</label>
-                    <input type="text" name="CAP" maxlength="5" required>
-				</p>                
-                <p>
-                    <label>Città * </label>
-                    <input type="text" name="Città" required>
+                    <label>Via </label>
+                    <input type="text" name="Via" placeholder="<%=cliente.getVia() %>" required>
+					<label>CAP </label>
+                    <input type="number" name="CAP" maxlength="5" placeholder="<%=cliente.getCAP() %>" required>
+                    <label>Città</label>
+                    <input type="text" name="Città" placeholder="<%=cliente.getCittà() %>" required>
                 </p>
             </fieldset>
             <fieldset class="row3">
                 <legend>Ulteriori Informazioni</legend>
                 <p>
-                    <label>Genere *</label>
+                    <label>Genere </label>
                     <input type="radio" value="radio">
                     	<label class="gender">Uomo</label>
                     <input type="radio" value="radio">
                     	<label class="gender">Donna</label>
                 </p>
                 <p>
-                    <label>Compleanno *</label>
-                    <input type="date" name="Data_Nascita" >
+                    <label>Compleanno </label>
+                    <input type="date" name="Data_Nascita" required>
                 </p>
                 <p>
-                    <label>Nazionalità *</label>    
+                    <label>Nazionalità </label>    
     				<select name="nazione">
     					<option value="US">United States</option>
   						<option value="CA">Canada</option>
@@ -320,7 +303,7 @@
                 </p>
                 <p> <h4>Dettagli Pagamento</h4> </p>
                 <p>
-                <label>Modalità </label>
+                <label>Modalità: </label>
         			<input type="radio" name="payment-method" value="card">
         			<label class="gender">Carta di Credito</label>
         			<input type="radio" name="payment-method" value="paypal">
@@ -328,27 +311,13 @@
         		</p>
         		<p>
         			<label>Numero carta</label>
-        			<input type="text" maxlength="16">
+        			<input type="text" maxlength="16" placeholder="****-*****-*****-*****">
         			<input type="number" maxlength="3" placeholder="CVC-CVV" min="000" max="999">
                 </p>
-            </fieldset>
-            <fieldset class="row4">
-                <legend>Termini e Mailing</legend>
-                 
-                <p class="agreement">
-                    <input type="checkbox" value="">
-                    <label>* Accetto <a href="TerminiCondizioni.html"><u>Termini e Condizioni</u> </a></label>
-                </p>
-                <p class="agreement">
-                    <input type="checkbox" value="">
-                    <label>Voglio ricevere offerte personalizzate da questo sito</label>
-                </p>
-                <p class="agreement">
-                    <input type="checkbox" value="">
-                    <label>Consento ai partner di inviarmi offerte personalizzate e servizi correlati</label>
+                <p>
+                	<input type="submit" value="Salva">
+                	<input type="submit" style="background-color:lightgray;"value="Indietro">
                 </p>
             </fieldset>
-            <div><input type="submit" class="button" value="Registrati!"></div>
-		</form>
-	</body>
+</body>
 </html>

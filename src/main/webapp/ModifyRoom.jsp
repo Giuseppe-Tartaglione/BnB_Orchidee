@@ -77,8 +77,16 @@
                 <input type="submit" value="Modifica">
             </th>
         </tr>
+      </table>
+	</fieldset>
+	<fieldset name="Dati Stanza">
+      <legend>Immagini stanza</legend>
+		<form action="" method="post" enctype="multipart/form-data">
+    	<label>Seleziona immagine:</label>
+    	<input type="file" name="image" accept="image/jpeg, image/png, image/gif" multiple="multiple">
+    	<input type="submit" name="submit" value="Upload">
+</form>	
 </fieldset>
-	
 </form>
 </body>
 </html>
