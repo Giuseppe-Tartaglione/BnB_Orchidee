@@ -27,9 +27,11 @@ input[type="submit"] {
     font-size:18px;
     margin:10px;
 }
+
 input[type="number"]{
 	 width: 80px;
 }
+
 input, select{
     text-align: center;
     height: 18px;

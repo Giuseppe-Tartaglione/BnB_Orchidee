@@ -22,7 +22,7 @@
                 <legend>Dettagli Personali </legend>
                 <p>
                     <label>Nome </label>
-                    <input type="text" name="Nome"  placeholder="<%=cliente.getNome() %>" required>
+                    <input type="text" name="Nome" placeholder="<%=cliente.getNome() %>" required>
                 
                     <label>Cognome </label>
                     <input type="text" name="Cognome" placeholder="<%=cliente.getCognome() %>" required>

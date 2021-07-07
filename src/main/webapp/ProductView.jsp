@@ -3,8 +3,8 @@
 <%
 Collection<?> products = (Collection<?>) request.getSession().getAttribute("products");
 UserBean user = (UserBean) request.getSession().getAttribute("currentSessionUser");
-if((user == null) && (products == null)) {
-response.sendRedirect("./generate");
+if ((user == null) && (products == null)) {
+	response.sendRedirect("./generate");
 return;
 }
 boolean result=false;
