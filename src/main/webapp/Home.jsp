@@ -10,31 +10,39 @@ Date d = new Date();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title>B&B Orchidee</title>
     <link rel="stylesheet" href="css_file/home.css">
 </head>
 
-<header>  
-    <div class="logo_icon"><a href="Home.jsp"><img src="img/Logo.png" alt="logo"></a></div> 
-    <nav>
-        <div class="nav_text">
-            <ul>
-                <li><a href="#">Listino</a></li>  
-                <li><a href="#">Novità</a></li>
-                <li><a href="#">Servizi</a></li>
-                <li><a href="#">About us</a></li>
-            </ul>
-        </div>
-    </nav>
-    <div class="icon login_icon" >
-    	<a href="Login.jsp">
-    		<img src="img/immagine.png" alt="login_button">
-    	</a>
-    </div>
-    <div class="icon cart_icon" ><a href="ProductCart.jsp"><img src="img/CartIcon.png" alt="cart_button"></a></div>
-</header>
        
 <body>
+	<header>  
+    	<div class="logo_icon">
+    		<a href="Home.jsp"><img src="img/Logo.png" alt="logo"></a>
+    	</div>
+     
+    	<nav>
+        	<div class="nav_text">
+            	<ul>
+                	<li><a href="CatalogView.jsp">Listino</a></li>  
+                	<li><a href="#">Novità</a></li>
+                	<li><a href="#">Servizi</a></li>
+                	<li><a href="#">About us</a></li>
+            	</ul>
+        	</div>
+    	</nav>
+    
+    	<div class="icon login_icon" >
+    		<a href="Login.jsp">
+    			<img src="img/immagine.png" alt="login_button">
+    		</a>
+    	</div>
+    
+    	<div class="icon cart_icon">
+    		<a href="ProductCart.jsp"><img src="img/CartIcon.png" alt="cart_button"></a>
+    	</div>
+	</header>
+
     <form method="post">
         <nav class="searchbar">
             <ul>
@@ -52,12 +60,13 @@ Date d = new Date();
 
                 <li>
                     <div class="persone">Persone
-                    <input type="number" name="adulti" min="0" max="4" required>
-                </div>
+                    	<input type="number" name="adulti" min="0" max="4" required>
+                	</div>
                 </li>
+                
                 <li>
-                    <div class="pernottamento">
-                        <select class="dropdown_button" id="pernottamento"> 
+                    <div>
+                        <select> 
                             <option value="bb">BB</option> 
                             <option value="mp">Mezza Pensione</option>
                             <option value="pc">Pensione Completa</option>   
@@ -83,7 +92,7 @@ Date d = new Date();
             </table>
         </div>
         <div class="novità">Novità 1</div>
-        <div class="novità">Novità  2</div>
+        <div class="novità">Novità 2</div>
     </div>
 
     <h1>Testo di prova h1</h1>

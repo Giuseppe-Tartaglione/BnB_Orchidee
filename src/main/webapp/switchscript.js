@@ -3,9 +3,9 @@ var view_wraps = document.querySelectorAll(".view_wrap");
 var list_view = document.querySelector(".list-view");
 var grid_view = document.querySelector(".grid-view");
 
-li_links.forEach(function(link){
-	link.addEventListener("click", function(){
-		li_links.forEach(function(link){
+li_links.forEach(function(link) {
+	link.addEventListener("click", function() {
+		li_links.forEach(function(link) {
 			link.classList.remove("active");
 		})
 
@@ -18,10 +18,12 @@ li_links.forEach(function(link){
 		})
 
 		if (li_view == "list-view") {
+			grid_view.style.display= "none";
 			list_view.style.display = "block";
 		}
 
 		else {
+			list_view.style.display = "block";
 			grid_view.style.display = "block"; 
 		}
 	})

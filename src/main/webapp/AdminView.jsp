@@ -63,6 +63,7 @@ UserBean user = (UserBean) request.getSession().getAttribute("currentSessionUser
 	  <li> <button><a href="ModifyRoom.jsp">Modifica</a></button> </li> 
     </ul>
 </div>
+
 <script>
 var acc = document.getElementsByClassName("accordion");
 var i;

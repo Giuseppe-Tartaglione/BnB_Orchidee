@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catalogo</title>
-    <link rel="stylesheet" href="catalog.css">
+    <link rel="stylesheet" href="CatalogView.css">
 </head>
 
 <body>
@@ -27,7 +27,7 @@
                     </div>
                     <div class="vi-right">
                         <p class="title">Camera</p>
-                        <p class="content">Descirizone del prodotto</p>
+                        <p class="content">Descrizione del prodotto</p>
                         <div class="button">Mostra di più</div>
                     </div>
                 </div>
@@ -106,6 +106,6 @@
         </div>
 	</div>
 
-    <script src="script.js"></script>
+    <script src="switchscript.js"></script>
 </body>
 </html>

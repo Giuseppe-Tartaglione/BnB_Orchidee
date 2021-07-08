@@ -35,7 +35,7 @@ nav a {
 }
 
 .nav_text {
-    padding: 0px 400px;
+    padding: 0 200px;
 }
 
 a:hover {
@@ -43,22 +43,22 @@ a:hover {
     transition: 0.5s;
 }
 
-.icon img {
-    width: 4%;
-    height: auto;
-    float: right;
-    
-}
-
-.logo_icon img {
+.logo_icon {
     width: 6%;
     height: auto; 
     position: fixed;
 }
 
+/*
+.icon img {
+    height: auto;
+    float: right;   
+}
+*/
+
 .login_icon {
+	height: 15px;
     padding-right: 1.5%;
-    
 }
 
 .cart_icon {
@@ -113,29 +113,4 @@ input[type="number"] {
     float: left;
     background-color: lightcoral;
     border-radius: 15px;
-}
-
-/* Menu a tendina "Pernottamento" */
-.pernottamento { 
-    display: inline-block;
-    border: none;
-} 
-
-.dropdown_button {
-    background-color: white;
-    padding: 16px;
-    font-size: 16px;
-    font-weight: 30;
-    border: none;
-    cursor: pointer;
-    border-radius: 10px;
-}
-
-.pernottamento:hover {
-    display: block;
-}
-
-.pernottamento:hover .dropdown_button {
-    background-color: #3e8e41;    
-    cursor: pointer;
 }
