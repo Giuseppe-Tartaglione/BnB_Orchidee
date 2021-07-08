@@ -14,7 +14,6 @@ Date d = new Date();
     <link rel="stylesheet" href="css_file/home.css">
 </head>
 
-       
 <body>
 	<header>  
     	<div class="logo_icon">
@@ -32,14 +31,16 @@ Date d = new Date();
         	</div>
     	</nav>
     
-    	<div class="icon login_icon" >
-    		<a href="Login.jsp">
-    			<img src="img/immagine.png" alt="login_button">
+    	<div class="icon cart_icon">
+    		<a href="ProductCart.jsp">
+    			<img src="img/Cart.png" alt="cart_button">
     		</a>
     	</div>
-    
-    	<div class="icon cart_icon">
-    		<a href="ProductCart.jsp"><img src="img/CartIcon.png" alt="cart_button"></a>
+    	
+    	<div class="icon login_icon">
+    		<a href="Login.jsp">
+    			<img src="img/Login.png" alt="login_button">
+    		</a>
     	</div>
 	</header>
 
@@ -60,7 +61,7 @@ Date d = new Date();
 
                 <li>
                     <div class="persone">Persone
-                    	<input type="number" name="adulti" min="0" max="4" required>
+                    	<input type="number" name="adulti" min="0" max="4" placeholder="Massimo 4 persone" required>
                 	</div>
                 </li>
                 

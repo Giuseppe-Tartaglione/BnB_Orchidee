@@ -35,7 +35,7 @@ nav a {
 }
 
 .nav_text {
-    padding: 0 200px;
+    padding: 0 400px;
 }
 
 a:hover {
@@ -43,26 +43,24 @@ a:hover {
     transition: 0.5s;
 }
 
-.logo_icon {
+.icon img {
+	width: 3%;
+    height: auto;
+    float: right;    
+}
+
+.logo_icon img {
     width: 6%;
     height: auto; 
     position: fixed;
 }
 
-/*
-.icon img {
-    height: auto;
-    float: right;   
-}
-*/
-
-.login_icon {
-	height: 15px;
-    padding-right: 1.5%;
+.login_icon img {
+    padding-right: 15px;
 }
 
-.cart_icon {
-    padding-right: 6%;
+.cart_icon img {
+    padding-right: 30px;
 }
 
 .searchbar {

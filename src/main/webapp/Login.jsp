@@ -19,12 +19,14 @@
                 <span></span>
                 <label>Email</label>
             </div>
+            
             <div class="txt-field">
-                <input type="password" name="password"  required>
+                <input type="password" name="password" required>
             	<span></span>
                 <label>Password</label>
             </div>
-            <div class="pass">Password dimenticata?</div>
+            
+           	<a href="Password.jsp" class="pass">Password dimenticata?</a>
             <div>
                 <table class="table">
                     <tr>

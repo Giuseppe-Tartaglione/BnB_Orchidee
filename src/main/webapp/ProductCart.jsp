@@ -11,20 +11,20 @@ UserBean user = (UserBean) request.getSession().getAttribute("currentSessionUser
 <head>
 	<meta charset="ISO-8859-1">
 	<title>Carrello</title>
+	<link rel="stylesheet" href="css_file/table.css">
 </head>
 
 <body>
 	<%= user.getCognome() %>
 	<% if(cart != null) { %>
 	<h2>Carrello</h2>
-	<table border="1">
+	<table>
 		<tr>
 			<th>ID_Stanza</th>
 			<th>Nome</th>
 			<th>Prezzo</th>
 			<th>Action</th>
 		</tr>
-	
 		<% List<ProductBean> prodcart = cart.getProducts();
 		for(ProductBean beancart: prodcart) {
 		%>
