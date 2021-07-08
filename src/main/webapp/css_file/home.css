@@ -64,16 +64,17 @@ a:hover {
 }
 
 .searchbar {
-    margin-left: 15%;
-    margin-right: 15%;
-    margin-top: 7%;
+    margin-left: 8%;
+    margin-right: 8%;
+    margin-top: 10%;
     display: flex;
     border-radius: 15px;
-    background-color: lightblue;
+    background-color: #277ad2;
 }
 
 .searchbar a {
-    font-weight: 100;
+    font-weight: 400;
+    font-style: bold;
 }
 
 .calendar {

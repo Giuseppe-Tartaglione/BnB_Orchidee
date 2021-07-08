@@ -110,3 +110,7 @@
 .grid-view .view-item .button {
     margin: 0 auto;
 }
+
+.back_button {
+	width: 20%;
+}

@@ -10,9 +10,13 @@
 </head>
 
 <body>
+
     <div class="wrapper">
     	<div class="links">
         	<ul>        
+		    	<li>
+		    		<a href="Home.jsp"><img class="back_button" src="img/back_icon.png" alt="back_button"></a>
+		    	</li>
             	<li class="li-list active" data-view="list-view">Lista</li> 
             	<li class="li-grid" data-view="grid-view">Griglia</li>  
         	</ul>
@@ -102,9 +106,9 @@
                     </div>
                 </div>               
             </div>
-
         </div>
 	</div>
+	</div> <!-- Aggiunto per eliminare l'errore che dava Eclipse, in teoria non serve -->
 
     <script src="switchscript.js"></script>
 </body>

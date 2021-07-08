@@ -61,7 +61,7 @@ Date d = new Date();
 
                 <li>
                     <div class="persone">Persone
-                    	<input type="number" name="adulti" min="0" max="4" placeholder="Massimo 4 persone" required>
+                    	<input type="number" name="adulti" min="0" max="4" placeholder="Max. 4" required>
                 	</div>
                 </li>
                 
@@ -73,6 +73,10 @@ Date d = new Date();
                             <option value="pc">Pensione Completa</option>   
                         </select>                 
                     </div>
+                </li>
+                
+                <li>
+                	<input type="image" src="img/search_icon.png">
                 </li>
             </ul>
         </nav>
