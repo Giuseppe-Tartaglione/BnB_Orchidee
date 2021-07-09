@@ -9,15 +9,15 @@
     	<style>
     	</style>
     </head>
+    
     <body>    
         <form action="" class="register">
             <h1>Registrazione</h1>
             <fieldset class="row1">
-                <legend>Dettagli Account
-                </legend>
+                <legend> Dettagli Account</legend>
                 <p> 
-                <label>Email *</label>
-                <input type="email" name="Email" class="long" required>
+                	<label>Email *</label>
+                	<input type="email" name="Email" class="long" required>
                 </p>
                 <p>
                     <label>Password*
@@ -28,6 +28,7 @@
                     <label class="obinfo">* campi obbligatori</label>
                 </p>
             </fieldset>
+            
             <fieldset class="row2">
                 <legend>Dettagli Personali </legend>
                 <p>
@@ -348,7 +349,7 @@
                     <label>Consento ai partner di inviarmi offerte personalizzate e servizi correlati</label>
                 </p>
             </fieldset>
-            <div><input type="submit" class="button" value="Registrati!"></div>
+            <div><input type="submit" class="button" value="Registrati"></div>
 		</form>
 	</body>
 </html>

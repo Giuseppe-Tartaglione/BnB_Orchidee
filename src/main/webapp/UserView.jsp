@@ -8,7 +8,7 @@ response.sendRedirect("./generate");
 return;
 }
 boolean result=false;
-//qui si controlla se valid è true o false, se è true si visaulizza il nome dellútente, se è false si visualizza il link alla pagina di login
+//qui si controlla se valid è true o false, se è true si visaulizza il nome dell'utente, se è false si visualizza il link alla pagina di login
 //questo è da controllare perchè se lo attivo mi da errore 500 dicendo che user è null, quindi non passa l`oggetto
 %>
 

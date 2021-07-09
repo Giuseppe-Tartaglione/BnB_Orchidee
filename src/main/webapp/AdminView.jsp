@@ -17,53 +17,54 @@ UserBean user = (UserBean) request.getSession().getAttribute("currentSessionUser
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">   
-    <link rel="stylesheet" href="table.css"> 
-    <title>Admin View</title>
+    <link rel="stylesheet" href="adminPage.css"> 
+    <title>Visualizzazione Admin</title>
 </head>
 
 <body> 
 <nav class="col-row">
-<h2>Categoria</h2>
-
+<h2>Categorie</h2>
 <button class="accordion">STANZA</button>
 <div class="panel">
 	<ul>
-        <li> <button>Aggiungi</button> </li> 
-        <li> <button>Rimuovi</button> </li>
-        <li> <button><a href="ModifyRoom.jsp">Modifica</a></button> </li> 
+        <li><button class="admin_button"><a href="AddRoom.jsp">Aggiungi</a></button></li> 
+        <li><button class="admin_button"><a href="RemoveRoom.jsp">Rimuovi</a></button></li>
+        <li><button class="admin_button"><a href="ModifyRoom.jsp">Modifica</a></button></li> 
 	</ul>
 </div>
 
 <button class="accordion">ORDINE</button>
 <div class="panel">
 	<ul>
-		<li> <button>Visualizza</button> </li>
-        <li> <button>Aggiungi</button> </li> 
-        <li> <button>Rimuovi</button> </li>
+		<li><button class="admin_button">Visualizza</button></li>
+        <li><button class="admin_button">Aggiungi</button></li> 
+        <li><button class="admin_button">Rimuovi</button></li>
     </ul>
 </div>
 
 <button class="accordion">PACCHETTI</button>
 <div class="panel">
 	<ul>
-		<li> <button>Visualizza</button> </li>
-        <li> <button>Crea</button> </li> 
-        <li> <button>Rimuovi</button> </li>
+		<li><button class="admin_button">Visualizza</button></li>
+        <li><button class="admin_button">Crea</button></li> 
+        <li><button class="admin_button">Rimuovi</button></li>
     </ul>
 </div>
+
 <button class="accordion">Dati Pagamento</button>
 <div class="panel">
 	<ul>
-        <li> <button><a href="ModifyRoom.jsp">Modifica</a></button> </li> 
+        <li><button class="admin_button"><a href="ModifyRoom.jsp">Modifica</a></button></li> 
     </ul>
 </div>
+
 <button class="accordion">Dati Anagrafici</button>
 <div class="panel">
 	<ul>
 	  <li> <button><a href="ModifyRoom.jsp">Modifica</a></button> </li> 
     </ul>
 </div>
-
+</nav>
 <script>
 var acc = document.getElementsByClassName("accordion");
 var i;

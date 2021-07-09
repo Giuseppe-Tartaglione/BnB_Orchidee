@@ -5,88 +5,83 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Modifica Stanza</title>
+    <link rel="stylesheet" href="adminPageStyle.css">
 </head>
 
-</head>
 <body>
     <form action="UserControl" method="post">
         <input type="hidden" name="action" value="modify"/>
         <fieldset name="Dati Stanza">
-            <legend>Dati Stanza</legend>
-            <table> 
+        <legend>Modifica i dati della stanza</legend>
+        <table> 
         <tr>
-           <th>
-               <label for Name="Nome"><b>Nome Stanza</b></label>
-            </th>
-            <th>
-                <input type="text" name="Nome"/>
-            </th>
-		</tr>
+           	<th>
+               	<div class="div_form">
+  					<input type="text" class="form_input">
+					<label for="Nome Stanza" class="form_label">Nome Stanza</label> 
+				</div>
+			</th>
+		
         <tr>
-            <th>
-                <label for Name="TV"><b>TV</b></label>
-            </th>
-            <th>
-                <input type="checkbox" name="TV"/>
+        	<th>
+        		<div class="div_form">
+            		<input type="checkbox" name="TV" class="form_input"/>
+            		<label for="TV"><b>TV</b></label>
+            	</div>
             </th>
         </tr>
             
-        <tr>
-            <th> 
-                <label for Name="Panorama"><b>Panorama</b></label>       
-            </th>               
-            <th>
-                <input type="checkbox" name="Panorama"/>    
+		<tr>
+        	<th>
+        		<div class="div_form">
+            		<input type="checkbox" name="Panorama"/>
+            		<label for="Panorama"><b>Panorama</b></label>
+            	</div>
             </th>
         </tr>
 
-        <tr>
-            <th>
-                <label for Name="Prezzo"><b>Prezzo</b></label> 
-            </th>
-            <th>
-                <input type="number" min="0" name="Prezzo"/>
+		<tr>
+        	<th>
+        		<div class="div_form">
+            		<input type="number" name="Prezzo"/>
+            		<label for="Prezzo"><b>Prezzo</b></label>
+            	</div>
             </th>
         </tr>
 
-        <tr>
-            <th>
-                <label for Name="Matrimoniali"><b>Matrimoniali</b></label>
-            </th>
-            <th>
-                <input type="number" min="0" name="Matrimoniali"/>
+       	<tr>
+        	<th>
+        		<div class="div_form">
+            		<input type="checkbox" name="Matrimoniali"/>
+            		<label for="Matrimoniali"><b>Matrimoniali</b></label>
+            	</div>
             </th>
         </tr>
         
-        <tr>
-            <th>
-                <label for Name="Singoli"><b>Singoli</b></label>
-            </th>
-            <th>
-                <input type="number" min="0" name="Singoli"/>
+     	<tr>
+        	<th>
+        		<div class="div_form">
+            		<input type="checkbox" name="Singoli"/>
+            		<label for="Singoli"><b>Singoli</b></label>
+            	</div>
             </th>
         </tr>
 
         <tr>
-            <th>
-                <input type="submit" value="Annulla">
-            </th>
-            <th>
-                <input type="submit" value="Modifica">
-            </th>
+            <th><input type="submit" value="Modifica"></th>
         </tr>
-      </table>
-	</fieldset>
+        </table>
+		</fieldset>
+		
 	<fieldset name="Dati Stanza">
       <legend>Immagini stanza</legend>
-		<form action="" method="post" enctype="multipart/form-data">
-    	<label>Seleziona immagine:</label>
-    	<input type="file" name="image" accept="image/jpeg, image/png, image/gif" multiple="multiple">
-    	<input type="submit" name="submit" value="Upload">
+		<form action="#" method="post" enctype="multipart/form-data">
+    		<label>Seleziona immagine: </label>
+    		<input type="file" name="image" accept="image/jpeg, image/png, image/gif" multiple="multiple">
+    		<input type="submit" name="submit" value="Carica">
+		</form>
+	</fieldset>
 </form>	
-</fieldset>
-</form>
 </body>
 </html>

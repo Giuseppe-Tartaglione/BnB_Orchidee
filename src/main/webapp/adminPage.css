@@ -1,3 +1,8 @@
+.h2 {
+	padding: 0 0 20px 0;
+    border-bottom: 1px solid silver;
+}
+
 .accordion {
   background-color: #eee;
   color: #444;
@@ -33,4 +38,16 @@
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
+}
+
+.admin_button {
+    height: 50px;
+    border: 1px solid;
+    background: #2fdcba;
+    border-radius: 22px;
+    font-size: 18px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    outline: none;
 }

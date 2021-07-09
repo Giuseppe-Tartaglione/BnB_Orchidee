@@ -3,11 +3,12 @@
 <html>
 <%@ page import="it.unisa.model.UserBean"%>
 <% UserBean cliente = new UserBean();%>
+
 <head>
-<meta charset="ISO-8859-1">
-<title>Modifica dati</title>
-<link rel="stylesheet" href="modifydate.css">
-</head>
+	<meta charset="ISO-8859-1">
+	<title>Modifica dati</title>
+	<link rel="stylesheet" href="modifydate.css">
+	</head>
 <body>
           <fieldset class="row1">
                 <legend>Dettagli Account</legend>
