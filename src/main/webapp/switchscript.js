@@ -18,12 +18,12 @@ li_links.forEach(function(link) {
 		})
 
 		if (li_view == "list-view") {
-			grid_view.style.display= "none";
 			list_view.style.display = "block";
+			grid_view.style.display= "none";
 		}
 
 		else {
-			list_view.style.display = "block";
+			list_view.style.display = "none";
 			grid_view.style.display = "block"; 
 		}
 	})
