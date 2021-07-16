@@ -64,9 +64,9 @@
                 <legend>Ulteriori Informazioni</legend>
                 <p>
                     <label>Genere *</label>
-                    <input type="radio" value="radio">
+                    <input type="radio" name="gender" value="radio">
                     	<label class="gender">Uomo</label>
-                    <input type="radio" value="radio">
+                    <input type="radio" name="gender" value="radio">
                     	<label class="gender">Donna</label>
                 </p>
                 <p>
@@ -319,7 +319,7 @@
         				<option value="ZW">Zimbabwe</option>
     </select>
                 </p>
-                <p> <h4>Dettagli Pagamento</h4> </p>
+                <p><h4>Dettagli Pagamento</h4>
                 <p>
                 <label>Modalità </label>
         			<input type="radio" name="payment-method" value="card">
