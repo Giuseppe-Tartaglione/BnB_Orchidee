@@ -19,6 +19,7 @@ fieldset {
 .div_form {
 	position: relative;
 	width: 20rem;
+	align-content: initial;
 }
 
 .form_input {
@@ -43,8 +44,8 @@ fieldset {
 }
 
 .form_label {
-	position: relative;
-	left: 14rem;
+	position: static;
+	text-align: left;
 	top: 0.5rem;
 	padding: 0 0.5rem;
 	cursor: text;

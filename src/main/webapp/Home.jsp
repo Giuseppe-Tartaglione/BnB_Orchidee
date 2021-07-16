@@ -14,12 +14,11 @@ Date d = new Date();
     <link rel="stylesheet" href="css_file/home.css">
 </head>
 
-<body>
+<body background="img/sfondoBB.png" class="sfondo">
 	<header>  
     	<div class="logo_icon">
     		<a href="Home.jsp"><img src="img/Logo.png" alt="logo"></a>
     	</div>
-     
     	<nav>
         	<div class="nav_text">
             	<ul>
@@ -99,11 +98,11 @@ Date d = new Date();
         <div class="novità">Novità 1</div>
         <div class="novità">Novità 2</div>
     </div>
-
-    <h1>Testo di prova h1</h1>
-    <h2>Testo di prova h2</h2>
-    <h3>Testo di prova h3</h3>
-    <p>Paragrafo di prova</p>
+    <div class="immagini">
+    	<div class="scorrimento">
+    		
+    	</div>
+    </div>
     
 </body>
 </html>
