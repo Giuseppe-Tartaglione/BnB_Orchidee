@@ -74,7 +74,7 @@ public class OrderControl extends HttpServlet {
 					ProductBean[] products = cart.doFillArray();
 					if (cart != null) {
 						if (isPackage) {		
-							//	order.doSave(products, BundleDao.doRetrieveByKey(ID), ID_Utente);	
+							order.doSave(products, BundleDao.doRetrieveByKey(ID), ID_Utente);	
 								System.out.println("Ordine fatto");
 						}
 					} else {
