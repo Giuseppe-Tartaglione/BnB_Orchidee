@@ -38,7 +38,7 @@ public class UserControl extends HttpServlet {
 			session.setAttribute("currentSessionUser", user);
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/ProductView.jsp");
 			dispatcher.forward(request, response);
-			System.out.println("stronbzo");*/
+			System.out.println("stronzo");*/
 	}
 
 	/**

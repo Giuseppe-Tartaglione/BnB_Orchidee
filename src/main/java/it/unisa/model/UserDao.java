@@ -100,7 +100,7 @@ public class UserDao {
 		PreparedStatement preparedStatement = null;
 
 		String selectSQL = "INSERT INTO " + UserDao.TABLE_NAME
-				+ " (CF,Nome,Cognome,Email,Password,Via,Cittï¿½,Cap,Provincia,Telefono,Data_Nascita,Iscritto,Card,Scadenza_Card) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				+ " (CF,Nome,Cognome,Email,Password,Via,Città,Cap,Provincia,Telefono,Data_Nascita,Iscritto,Card,Scadenza_Card) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 		try {
 			connection = ds.getConnection();

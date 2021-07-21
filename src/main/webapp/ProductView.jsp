@@ -1,10 +1,10 @@
-<%@page import="java.io.IOException"%>
+<%@ page import="java.io.IOException, java.util.*,it.unisa.model.ProductBean,it.unisa.model.Cart,it.unisa.model.UserBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 Collection<?> products = (Collection<?>) request.getSession().getAttribute("products");
 UserBean user = (UserBean) request.getSession().getAttribute("currentSessionUser");
-if((user == null) && (products == null)) {
-response.sendRedirect("./generate");
+if ((user == null) && (products == null)) {
+	response.sendRedirect("./generate");
 return;
 }
 boolean result=false;
@@ -14,7 +14,6 @@ boolean result=false;
 
 <!DOCTYPE html>
 <html>
-<%@ page contentType="text/html; charset=UTF-8" import="java.util.*,it.unisa.model.ProductBean,it.unisa.model.Cart,it.unisa.model.UserBean"%>
 <%=user.isValid() %>
 <%
 try{

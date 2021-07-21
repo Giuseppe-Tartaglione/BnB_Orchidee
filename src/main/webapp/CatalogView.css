@@ -1,0 +1,116 @@
+*{
+    font-family: sans-serif;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.wrapper {
+    width: 800px;
+    margin: 20px auto;
+}
+
+.links {
+    margin-bottom: 20px;
+    background: #fff;
+    padding: 15px;
+    border-radius: 3px;
+}
+
+.links ul {
+    display: flex;
+    justify-content: center;
+}
+
+.links ul li {
+    margin: 0 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 20px;
+    letter-spacing: 3px;
+    cursor: pointer;
+}
+
+.links ul li:hover, .links ul li.active {
+    color: #2fdcba;
+} 
+
+.view-item img {
+    width: 200px;
+}
+
+.view-main {
+    background: #fff;
+    border-radius: 3px;
+    padding: 15px;
+} 
+
+/* Visualizzazione a lista */
+.list-view .view-item {
+    border: 1px solid #e2efe1;
+    margin: 10px;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+}
+
+/* Specifica la distanza dell'ultimo elemento dal bordo della pagina */
+.list-view .view-item :last-child {
+    margin-bottom: 0;
+}
+
+.list-view .view-item .vi-left {
+    margin-right: 25px;
+}
+
+.view-item .title {
+    font-weight: 500;
+}
+
+.view-item .content {
+    margin: 5px 0;
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 200;
+}
+
+.view-item .button {
+    width: 125px;
+    background:  #0f7017;
+    color: #fff;
+    border-radius: 3px;
+    padding: 8px 5px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.view-item .button:hover {
+    background: #189e23;
+}
+
+/* Visualizzazione a griglia */
+.grid-view {
+    width: 100%;
+}
+
+.grid-view .view-item {
+    width: 230px;
+    border: 1px solid #e2efe1;
+    padding: 25px;
+    text-align: center;
+    margin: 10px;
+    display: inline-block;
+}
+
+.grid-view .view-item .vi-left {
+    margin-bottom: 10px;
+}
+
+.grid-view .view-item .button {
+    margin: 0 auto;
+}
+
+.back_button {
+	width: 20%;
+}

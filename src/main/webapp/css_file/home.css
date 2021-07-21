@@ -1,0 +1,129 @@
+body {
+margin: 0;
+padding: 0;
+}
+.sfondo{
+
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	opacity: 0.5;
+    margin: 0;
+    padding: 0;
+    background-image: url("img/sfondoBB.png");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	opacity: inherit;
+}
+
+header {
+width: 100%;
+background-color: #2fdcba;
+top:0;
+position: fixed;
+}
+
+ul {
+width: auto;
+float: left;
+padding: 0px;
+}
+
+li {
+display: inline-block;
+padding: 5px 30px;
+}
+
+nav {
+padding: 10px 10px;
+}
+
+nav a {
+text-align: center;
+text-decoration: none;
+font-family: sans-serif;
+font-weight: 550;
+font-size: 1.3vw;
+color: white;
+}
+
+.nav_text {
+padding: 0 400px;
+}
+
+a:hover {
+color: darkcyan;
+transition: 0.5s;
+}
+
+.icon img {
+width: 3%;
+height: auto;
+float: right;
+}
+
+.logo_icon img {
+width: 6%;
+height: auto;
+position: fixed;
+}
+
+.login_icon img {
+padding-right: 15px;
+}
+
+.cart_icon img {
+padding-right: 30px;
+}
+
+.searchbar {
+margin-left: 8%;
+margin-right: 8%;
+margin-top: 10%;
+display: flex;
+border-radius: 15px;
+background-color: #277ad2;
+}
+
+.searchbar a {
+font-weight: 400;
+font-style: bold;
+}
+
+.calendar {
+padding: 0px 27px;
+text-align: center;
+vertical-align: top;
+user-select: none;
+}
+
+.check-in, .check-out {
+height: 100%;
+width: 100%;
+cursor: pointer;
+}
+
+input[type="date"] {
+border-radius: 15px;
+height: 50%;
+}
+
+input[type="number"] {
+border-radius: 5px;
+width: 50%;
+height: 40%;
+}
+
+.pacchetti {
+margin: 15%;
+background-color:#61d869;
+border-radius: 15px;
+}
+
+.novità  {
+margin-top: 5%;
+margin-left: 8%;
+margin-right: 8%;
+float: left;
+background-color: lightcoral;
+border-radius: 15px;
+}
